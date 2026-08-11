@@ -1,0 +1,325 @@
+:root {
+  --navy: #17324d;
+  --navy-soft: #244b6d;
+  --teal: #0b6b66;
+  --teal-dark: #07534f;
+  --ink: #203040;
+  --muted: #526579;
+  --paper: #f6f9fb;
+  --surface: #ffffff;
+  --line: #d7e1e8;
+  --teal-pale: #eaf6f4;
+  --blue-pale: #edf5fb;
+  --amber-pale: #fff5df;
+  --rose-pale: #fff0ef;
+  --focus: #c2410c;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  color: var(--ink);
+  background: var(--paper);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+html[lang^="zh"] body { line-height: 1.78; }
+
+.main-container {
+  max-width: 1160px;
+  padding: 0 clamp(1rem, 3vw, 2.25rem) 4rem;
+}
+
+.vlab-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: fit-content;
+  min-height: 44px;
+  margin: 1.25rem 0 0.65rem;
+  color: var(--navy);
+  font-weight: 800;
+  letter-spacing: 0.085em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.vlab-brand:hover {
+  color: var(--teal-dark);
+  text-decoration: none;
+}
+
+.vlab-brand:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.vlab-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy), var(--teal));
+  border-radius: 9px;
+  box-shadow: 0 5px 14px rgba(23, 50, 77, 0.18);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.vlab-name { font-size: 0.9rem; }
+.vlab-brand + #header { margin-top: 0.65rem; }
+
+#header {
+  margin: 1.25rem 0 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.8rem);
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy), var(--teal));
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(23, 50, 77, 0.14);
+}
+
+#header h1,
+#header h3,
+#header h4,
+#header .author,
+#header .date { color: #fff; }
+
+#header h1 {
+  margin-top: 0;
+  font-size: clamp(2.05rem, 5vw, 3.45rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+#header .subtitle {
+  max-width: 780px;
+  margin-top: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity: 0.94;
+}
+
+h1, h2, h3, h4 {
+  color: var(--navy);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h2 {
+  margin-top: 3.1rem;
+  padding-bottom: 0.48rem;
+  border-bottom: 2px solid var(--line);
+}
+
+h3 { margin-top: 2rem; }
+p, li { max-width: 82ch; }
+
+a {
+  color: #075ea8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover { color: #034779; }
+
+.language-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  margin: -0.25rem 0 1rem;
+  font-size: 14px;
+}
+
+.language-switch a,
+.language-switch span {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0.48rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  text-decoration: none;
+}
+
+.language-switch .language-option.active {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  font-weight: 750;
+}
+
+.language-switch .language-home {
+  margin-right: auto;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.module-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0 2.2rem;
+}
+
+.module-stat {
+  padding: 0.95rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(23, 50, 77, 0.04);
+}
+
+.module-stat strong {
+  display: block;
+  color: var(--navy);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.module-stat span { color: var(--muted); }
+
+.callout {
+  max-width: 84ch;
+  margin: 1.35rem 0;
+  padding: 1rem 1.2rem;
+  background: var(--teal-pale);
+  border-left: 5px solid var(--teal);
+  border-radius: 0 10px 10px 0;
+}
+
+.callout.warning {
+  background: var(--amber-pale);
+  border-left-color: #9a4e00;
+}
+
+pre {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(23, 50, 77, 0.035);
+}
+
+pre:not([class]) { background: #fbfcfd; }
+
+code {
+  color: #8c2d62;
+  overflow-wrap: anywhere;
+}
+
+table {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+  background: var(--surface);
+  font-size: 0.94rem;
+}
+
+th {
+  color: #fff;
+  background: var(--navy);
+  font-weight: 750;
+}
+
+th, td {
+  padding: 0.72rem 0.8rem !important;
+  border-color: var(--line) !important;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) { background: #f7fafc; }
+
+.figure {
+  margin: 1.75rem 0 2.2rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(23, 50, 77, 0.06);
+}
+
+.figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.figure .caption {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.tocify {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 7px 22px rgba(23, 50, 77, 0.07);
+}
+
+.tocify-item a, .tocify-subheader .tocify-item a { color: var(--muted); }
+.tocify-item.active > a, .tocify-item:hover > a { color: #fff; background: var(--teal); }
+
+.btn, .code-folding-btn, button.dropdown-toggle {
+  min-height: 38px;
+  border-radius: 8px;
+}
+
+html[lang^="zh"] .code-folding-btn,
+html[lang^="zh"] button.dropdown-toggle {
+  position: relative;
+  min-width: 78px;
+  color: transparent !important;
+}
+
+html[lang^="zh"] .code-folding-btn::after,
+html[lang^="zh"] button.dropdown-toggle::after {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 12px;
+  line-height: 1;
+}
+
+html[lang^="zh"] .code-folding-btn::after { content: "显示代码"; }
+html[lang^="zh"] .code-folding-btn[aria-expanded="true"]::after { content: "隐藏代码"; }
+html[lang^="zh"] button.dropdown-toggle::after { content: "代码 ▾"; }
+
+@media (max-width: 767px) {
+  .main-container { padding-inline: 1rem; }
+  #header { border-radius: 14px; }
+  .module-bar { grid-template-columns: 1fr; }
+  .language-switch { justify-content: flex-start; }
+  .language-switch .language-home { width: 100%; margin-right: 0; }
+  table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+@media print {
+  body { color: #000; background: #fff; }
+  .vlab-brand, .language-switch, #TOC, .tocify, .code-folding-btn,
+  button.dropdown-toggle { display: none !important; }
+  #header { color: #000; background: #fff; border: 2px solid #000; box-shadow: none; }
+  #header h1, #header h3 { color: #000; }
+  .main-container { max-width: none; padding: 0; }
+  pre, .figure { break-inside: avoid; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
