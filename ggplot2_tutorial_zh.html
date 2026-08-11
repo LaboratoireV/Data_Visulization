@@ -3209,6 +3209,111 @@ font-size: 0.95em;
 
 
 
+<style id="statistics-study-theme">
+/* Visual alignment with the Statistics_Study tutorial pages. */
+.vlab-brand { margin: 1.5rem 0 0.65rem; }
+#header { margin: 1.5rem 0 2.25rem; }
+#header .subtitle { max-width: 760px; }
+p, li { max-width: 78ch; }
+.language-switch { margin: -0.75rem 0 1rem; }
+.language-switch a,
+.language-switch span { padding: 0.38rem 0.9rem; }
+.module-bar { margin: 1.25rem 0 2rem; }
+.callout { max-width: 82ch; }
+pre {
+  max-height: 34rem;
+  overflow: auto;
+  border: 1px solid #d6e0e6;
+  border-radius: 8px;
+  box-shadow: none;
+}
+code { color: #7a2431; }
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.3rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+th {
+  color: var(--navy);
+  background: var(--teal-pale);
+}
+th, td {
+  padding: 0.7rem 0.78rem !important;
+  vertical-align: top !important;
+}
+.figure {
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.figure img { border-radius: 8px; }
+.figure .caption,
+p.caption {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: left;
+}
+.tocify {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+}
+@media (max-width: 767px) {
+  body { font-size: 15px; }
+  .main-container { padding-right: 15px; padding-left: 15px; }
+  #header { border-radius: 12px; }
+  .language-switch { margin-top: 0; }
+  .row > .col-xs-12.col-sm-4.col-md-3 { display: none; }
+  .toc-content { float: none; width: 100% !important; }
+  table { white-space: normal; }
+}
+@media print {
+  body { color: #111; background: #fff; font-size: 11pt; }
+  .vlab-brand { display: flex !important; color: #111; }
+  .vlab-mark {
+    color: #fff;
+    background: var(--navy);
+    box-shadow: none;
+  }
+  .language-switch,
+  #TOC,
+  .tocify,
+  .tocify-wrapper,
+  .btn,
+  .code-folding-btn,
+  .nav-tabs,
+  button.dropdown-toggle { display: none !important; }
+  #header {
+    color: var(--ink);
+    background: #fff;
+    border: 2px solid var(--navy);
+    box-shadow: none;
+  }
+  #header h1,
+  #header h3,
+  #header h4,
+  #header .author,
+  #header .date { color: var(--navy); }
+  pre, table, figure, .figure, .callout {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
