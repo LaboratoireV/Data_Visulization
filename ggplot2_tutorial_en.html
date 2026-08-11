@@ -4300,6 +4300,90 @@ projects, make the data meaning and comparison task clear before adding
 visual decoration.</p>
 </div>
 
+<style id="vlab-footer-styles">
+.guide-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 4rem;
+  padding: 1.4rem 0 0.4rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.guide-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.guide-footer-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: 0 0 auto;
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy), var(--teal));
+  border-radius: 10px;
+  box-shadow: 0 5px 14px rgba(23, 50, 77, 0.16);
+  font-weight: 800;
+}
+.guide-footer-copy strong,
+.guide-footer-copy span {
+  display: block;
+}
+.guide-footer-copy strong {
+  color: var(--navy);
+  font-size: 0.92rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+.guide-footer-copy span {
+  margin-top: 0.1rem;
+  font-size: 0.78rem;
+}
+.guide-footer-home {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--navy);
+  background: var(--surface);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.guide-footer-home:hover {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  text-decoration: none;
+}
+@media (max-width: 767px) {
+  .guide-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media print {
+  .guide-footer { color: #111; }
+  .guide-footer-mark { box-shadow: none; }
+}
+</style>
+<footer class="guide-footer" aria-label="The V Lab">
+  <div class="guide-footer-brand">
+    <span class="guide-footer-mark" aria-hidden="true">V</span>
+    <span class="guide-footer-copy">
+      <strong>The V Lab</strong>
+      <span>ggplot2 Learning Studio · ggplot2 学习中心</span>
+    </span>
+  </div>
+  <a class="guide-footer-home" href="index.html">Home / 首页 →</a>
+</footer>
+
 
 
 </div>
