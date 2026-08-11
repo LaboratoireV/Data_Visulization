@@ -1,0 +1,3 @@
+# Keep R Markdown source files local.
+*.Rmd
+*.rmd
