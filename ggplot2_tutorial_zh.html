@@ -4231,6 +4231,90 @@ TRUE</code>。先确认缺失值为何存在、是否应删除，以及删除是
 最常用的图形语法、几何对象、统计变换、位置、分面、标度、坐标、主题、注释、编程与导出方法。实际项目中，优先保证数据含义和比较任务清晰，再追求视觉装饰。</p>
 </div>
 
+<style id="vlab-footer-styles">
+.guide-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 4rem;
+  padding: 1.4rem 0 0.4rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.guide-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.guide-footer-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: 0 0 auto;
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy), var(--teal));
+  border-radius: 10px;
+  box-shadow: 0 5px 14px rgba(23, 50, 77, 0.16);
+  font-weight: 800;
+}
+.guide-footer-copy strong,
+.guide-footer-copy span {
+  display: block;
+}
+.guide-footer-copy strong {
+  color: var(--navy);
+  font-size: 0.92rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+.guide-footer-copy span {
+  margin-top: 0.1rem;
+  font-size: 0.78rem;
+}
+.guide-footer-home {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--navy);
+  background: var(--surface);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.guide-footer-home:hover {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  text-decoration: none;
+}
+@media (max-width: 767px) {
+  .guide-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media print {
+  .guide-footer { color: #111; }
+  .guide-footer-mark { box-shadow: none; }
+}
+</style>
+<footer class="guide-footer" aria-label="The V Lab">
+  <div class="guide-footer-brand">
+    <span class="guide-footer-mark" aria-hidden="true">V</span>
+    <span class="guide-footer-copy">
+      <strong>The V Lab</strong>
+      <span>ggplot2 Learning Studio · ggplot2 学习中心</span>
+    </span>
+  </div>
+  <a class="guide-footer-home" href="index.html">Home / 首页 →</a>
+</footer>
+
 
 
 </div>
