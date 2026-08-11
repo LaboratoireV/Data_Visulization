@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A bilingual, self-paced ggplot2 learning studio from The V Lab with 20 runnable charts, modern R syntax, and practical visualization guidance.">
+  <meta name="theme-color" content="#12383b">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://laboratoirev.github.io/Data_Visulization/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The V Lab">
+  <meta property="og:title" content="ggplot2 Learning Studio | The V Lab">
+  <meta property="og:description" content="Learn ggplot2 through a bilingual, example-driven path from mappings and geoms to scales, facets, themes, and export.">
+  <meta property="og:url" content="https://laboratoirev.github.io/Data_Visulization/">
+  <meta property="og:image" content="https://laboratoirev.github.io/Data_Visulization/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The V Lab ggplot2 Learning Studio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ggplot2 Learning Studio | The V Lab">
+  <meta name="twitter:description" content="A bilingual, example-driven guide to clear and reproducible data visualization with R.">
+  <meta name="twitter:image" content="https://laboratoirev.github.io/Data_Visulization/og.png">
+  <title>ggplot2 Learning Studio | The V Lab</title>
+  <style>
+    :root {
+      --ink: #12383b;
+      --ink-deep: #092a2d;
+      --ink-soft: #50686b;
+      --paper: #f3efe6;
+      --surface: #fffdf8;
+      --surface-soft: #f9f6ef;
+      --teal: #0b6b66;
+      --teal-dark: #07504d;
+      --mint: #c7e3db;
+      --mint-pale: #e9f5f1;
+      --coral: #a4422f;
+      --coral-pale: #f9e9e3;
+      --gold: #8a5a10;
+      --gold-pale: #f7edda;
+      --blue: #3d7085;
+      --blue-pale: #e3eef2;
+      --violet: #76618c;
+      --violet-pale: #eee9f3;
+      --focus: #c2410c;
+      --line: rgba(18, 56, 59, 0.15);
+      --line-strong: rgba(18, 56, 59, 0.28);
+      --shadow-sm: 0 10px 28px rgba(15, 49, 52, 0.08);
+      --shadow-lg: 0 24px 64px rgba(15, 49, 52, 0.14);
+      --radius-sm: 14px;
+      --radius-md: 22px;
+      --radius-lg: 32px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 91% 7%, rgba(199, 227, 219, 0.74), transparent 28rem),
+        radial-gradient(circle at 7% 37%, rgba(249, 233, 227, 0.64), transparent 24rem),
+        linear-gradient(180deg, #fbfaf6 0%, var(--paper) 43%, #f8f5ee 100%);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+                   "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { text-wrap: balance; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 12px;
+      left: 12px;
+      padding: 10px 15px;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--ink-deep);
+      font-weight: 850;
+      text-decoration: none;
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .header-wrap {
+      position: sticky;
+      z-index: 30;
+      top: 0;
+      border-bottom: 1px solid rgba(18, 56, 59, 0.10);
+      background: rgba(251, 250, 246, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .site-header {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      min-height: 44px;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 11px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--teal);
+      box-shadow: 0 9px 20px rgba(11, 107, 102, 0.20);
+      letter-spacing: 0;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-left: auto;
+    }
+
+    .main-nav a {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      font-weight: 780;
+      text-decoration: none;
+    }
+
+    .main-nav a:hover { color: var(--teal-dark); }
+
+    .repo-link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--ink) !important;
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.78fr);
+      gap: clamp(46px, 7vw, 96px);
+      align-items: center;
+      min-height: 690px;
+      padding-block: clamp(68px, 9vw, 112px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: var(--teal-dark);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      content: "";
+      background: var(--coral);
+    }
+
+    h1 {
+      max-width: 820px;
+      margin-bottom: 22px;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(3.55rem, 7.4vw, 6.85rem);
+      font-weight: 500;
+      letter-spacing: -0.062em;
+      line-height: 0.92;
+    }
+
+    .hero-zh {
+      margin-bottom: 24px;
+      color: var(--teal-dark);
+      font-family: Georgia, "Songti SC", "STSong", serif;
+      font-size: clamp(1.5rem, 2.9vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin-bottom: 34px;
+      color: var(--ink-soft);
+      font-size: clamp(1.02rem, 1.7vw, 1.18rem);
+    }
+
+    .hero-copy span {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .hero-actions, .language-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 850;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      color: #fff;
+      background: var(--teal);
+      box-shadow: 0 12px 24px rgba(11, 107, 102, 0.19);
+    }
+
+    .button-primary:hover { background: var(--teal-dark); }
+
+    .button-secondary {
+      border-color: var(--line-strong);
+      background: rgba(255, 253, 248, 0.78);
+    }
+
+    .button-secondary:hover {
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid rgba(18, 56, 59, 0.16);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 248, 0.82);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-panel::after {
+      position: absolute;
+      right: -50px;
+      bottom: -65px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(199, 227, 219, 0.52);
+      content: "";
+    }
+
+    .panel-kicker {
+      margin-bottom: 16px;
+      color: var(--coral);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .grammar-stack {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .grammar-layer {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 13px;
+      align-items: center;
+      min-height: 66px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+    }
+
+    .grammar-layer:nth-child(2) { margin-left: 12px; background: var(--mint-pale); }
+    .grammar-layer:nth-child(3) { margin-left: 24px; background: var(--blue-pale); }
+    .grammar-layer:nth-child(4) { margin-left: 36px; background: var(--coral-pale); }
+    .grammar-layer:nth-child(5) { margin-left: 48px; background: var(--gold-pale); }
+
+    .layer-number {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 11px;
+      color: #fff;
+      background: var(--ink);
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .grammar-layer strong {
+      display: block;
+      margin-bottom: 2px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.91rem;
+    }
+
+    .grammar-layer span:last-child {
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+    }
+
+    .section { padding-block: clamp(72px, 9vw, 112px); }
+
+    .section-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.7fr);
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    .section-intro h2 {
+      margin-bottom: 0;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(2.55rem, 5vw, 4.6rem);
+      font-weight: 500;
+      letter-spacing: -0.048em;
+      line-height: 0.98;
+    }
+
+    .section-intro p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+    }
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .path-step {
+      display: flex;
+      min-height: 290px;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .path-step:nth-child(2) { background: var(--mint-pale); }
+    .path-step:nth-child(3) { background: var(--blue-pale); }
+    .path-step:nth-child(4) { background: var(--coral-pale); }
+
+    .step-number {
+      color: var(--coral);
+      font-family: Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+
+    .path-step h3 {
+      margin: 26px 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .path-step p {
+      color: var(--ink-soft);
+      font-size: 0.91rem;
+    }
+
+    .step-link {
+      margin-top: auto;
+      color: var(--teal-dark);
+      font-weight: 850;
+      text-underline-offset: 4px;
+    }
+
+    .library-section {
+      border-block: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.58);
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .course-card {
+      display: flex;
+      min-height: 440px;
+      flex-direction: column;
+      padding: clamp(25px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--teal);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .course-card:nth-child(2) { border-top-color: var(--coral); }
+    .course-card:hover, .course-card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .course-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .course-number {
+      font-family: Georgia, serif;
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .course-meta { display: flex; flex-wrap: wrap; gap: 7px; justify-content: flex-end; }
+
+    .tag {
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: var(--surface-soft);
+      font-size: 0.69rem;
+      font-weight: 850;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .course-card h3 {
+      margin-bottom: 5px;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+
+    .course-title-zh {
+      margin-bottom: 20px;
+      color: var(--teal-dark);
+      font-family: Georgia, "Songti SC", serif;
+      font-size: 1.15rem;
+      font-weight: 650;
+    }
+
+    .course-description { color: var(--ink-soft); }
+
+    .topic-line {
+      margin-top: auto;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      font-weight: 720;
+    }
+
+    .language-actions { margin-top: 17px; }
+    .language-actions .button { color: #fff; background: var(--teal); }
+    .course-card:nth-child(2) .language-actions .button { background: var(--coral); }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .topic-card {
+      min-height: 190px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .topic-card:nth-child(2), .topic-card:nth-child(5) { background: var(--mint-pale); }
+    .topic-card:nth-child(3), .topic-card:nth-child(6) { background: var(--gold-pale); }
+
+    .topic-code {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--coral);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .topic-card h3 { margin-bottom: 8px; font-size: 1.08rem; }
+    .topic-card p { margin-bottom: 0; color: var(--ink-soft); font-size: 0.88rem; }
+
+    .principles {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(36px, 7vw, 72px);
+      border-radius: var(--radius-lg);
+      color: #e9f5f1;
+      background: var(--ink-deep);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .principles::after {
+      position: absolute;
+      top: -130px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(199, 227, 219, 0.08);
+      content: "";
+    }
+
+    .principles h2 {
+      max-width: 780px;
+      margin-bottom: 16px;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(2.25rem, 5vw, 4.15rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .principles > p { max-width: 800px; color: #bfd3d0; }
+
+    .principle-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .principle {
+      padding: 22px;
+      border: 1px solid rgba(238, 248, 245, 0.16);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .principle strong { display: block; margin-bottom: 6px; color: #fff; }
+    .principle span { color: #b8ceca; font-size: 0.85rem; }
+
+    .site-footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 30px;
+      align-items: end;
+      padding-block: 42px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.84rem;
+    }
+
+    .footer-title { display: block; margin-bottom: 4px; color: var(--ink); font-weight: 850; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 18px; }
+    .footer-links a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 750; text-underline-offset: 4px; }
+
+    @media (max-width: 1020px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-panel { max-width: 740px; }
+      .path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 820px) {
+      html { scroll-padding-top: 24px; }
+      .header-wrap { position: static; }
+      .site-header { flex-wrap: wrap; padding-block: 14px; }
+      .main-nav { width: 100%; order: 3; justify-content: space-between; margin-left: 0; padding-top: 11px; border-top: 1px solid var(--line); }
+      .repo-link { margin-left: auto; }
+      .section-intro, .course-grid { grid-template-columns: 1fr; }
+      .course-card { min-height: auto; }
+      .topics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .principle-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      h1 { font-size: clamp(3.15rem, 17vw, 4.8rem); }
+      .main-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
+      .main-nav a { justify-content: center; text-align: center; }
+      .hero-actions, .hero-actions .button { width: 100%; }
+      .grammar-layer:nth-child(n) { margin-left: 0; }
+      .path-grid, .topics-grid { grid-template-columns: 1fr; }
+      .path-step { min-height: 225px; }
+      .course-topline { align-items: flex-start; }
+      .course-meta { justify-content: flex-start; }
+      .language-actions .button { flex: 1 1 145px; }
+      .site-footer { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to learning content <span lang="zh-CN">/ 跳到学习内容</span></a>
+
+  <div class="header-wrap">
+    <header class="site-header shell">
+      <a class="brand" href="index.html" aria-label="The V Lab ggplot2 learning studio home" aria-current="page">
+        <span class="brand-mark" aria-hidden="true">V</span>
+        <span>The V Lab</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#learning-path">Learning path</a>
+        <a href="#tutorials">Tutorials</a>
+        <a href="#topics">Topics</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="repo-link" href="https://github.com/LaboratoireV/Data_Visulization">Repository</a>
+    </header>
+  </div>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero shell" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Bilingual data visualization studio <span lang="zh-CN">· 双语数据可视化课程</span></p>
+        <h1 id="page-title">Make data visible.</h1>
+        <p class="hero-zh" lang="zh-CN">用 ggplot2 把数据讲清楚。</p>
+        <p class="hero-copy">
+          A practical, self-paced path through the grammar of graphics—from the first mapping to polished, reproducible figures ready for analysis, teaching, and publication.
+          <span lang="zh-CN">从第一张映射图开始，逐步掌握图形语法、常用图层与出版级细节，做出适合分析、教学和分享的可重复图表。</span>
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="ggplot2_tutorial_en.html" hreflang="en">Start in English <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN">从中文版开始 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="The grammar of graphics at a glance">
+        <p class="panel-kicker">Build every plot in layers</p>
+        <ol class="grammar-stack">
+          <li class="grammar-layer"><span class="layer-number">01</span><span><strong>data</strong><span>Choose the observations and variables</span></span></li>
+          <li class="grammar-layer"><span class="layer-number">02</span><span><strong>aes()</strong><span>Map variables to visual properties</span></span></li>
+          <li class="grammar-layer"><span class="layer-number">03</span><span><strong>geom_*()</strong><span>Show points, lines, bars, and shapes</span></span></li>
+          <li class="grammar-layer"><span class="layer-number">04</span><span><strong>scale_*()</strong><span>Control axes, color, and labels</span></span></li>
+          <li class="grammar-layer"><span class="layer-number">05</span><span><strong>theme()</strong><span>Refine layout and communication</span></span></li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="section shell" id="learning-path" aria-labelledby="path-title">
+      <div class="section-intro">
+        <h2 id="path-title">A workflow you can reuse.</h2>
+        <p>
+          Move from understanding the data to choosing an honest visual form, then refine the chart for its audience.
+          <span lang="zh-CN">从理解数据开始，选择诚实清晰的视觉表达，再针对读者完善图表。</span>
+        </p>
+      </div>
+      <ol class="path-grid">
+        <li class="path-step">
+          <span class="step-number">01</span>
+          <h3>Frame the question</h3>
+          <p>Confirm the unit of analysis, variable types, missingness, and the comparison the reader must make.</p>
+          <a class="step-link" href="ggplot2_tutorial_en.html#grammar-of-graphics-fundamentals">Start with the grammar <span aria-hidden="true">→</span></a>
+        </li>
+        <li class="path-step">
+          <span class="step-number">02</span>
+          <h3>Choose the geometry</h3>
+          <p>Match relationships, distributions, counts, time series, and grouped comparisons to suitable geoms.</p>
+          <a class="step-link" href="ggplot2_tutorial_en.html#common-geoms">Explore common geoms <span aria-hidden="true">→</span></a>
+        </li>
+        <li class="path-step">
+          <span class="step-number">03</span>
+          <h3>Make comparisons easy</h3>
+          <p>Use scales, facets, coordinates, and annotations to reveal the intended pattern without distortion.</p>
+          <a class="step-link" href="ggplot2_tutorial_en.html#scales-controlling-visual-mappings">Refine the mapping <span aria-hidden="true">→</span></a>
+        </li>
+        <li class="path-step">
+          <span class="step-number">04</span>
+          <h3>Reuse and share</h3>
+          <p>Wrap recurring plots in functions, apply a consistent theme, and export at a deliberate size.</p>
+          <a class="step-link" href="ggplot2_tutorial_en.html#exporting-high-quality-figures">Prepare the final figure <span aria-hidden="true">→</span></a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section library-section" id="tutorials" aria-labelledby="tutorials-title">
+      <div class="shell">
+        <div class="section-intro">
+          <h2 id="tutorials-title">Choose your edition.</h2>
+          <p>
+            Both editions follow the same 15-part structure and execute the same examples. Every page includes visible R code, 20 rendered charts, explanations, pitfalls, and a reproducible workflow.
+            <span lang="zh-CN">中英文版采用相同的 15 章结构与示例，每页均包含可见 R 代码、20 幅实绘图表、方法解释、常见陷阱与复现流程。</span>
+          </p>
+        </div>
+
+        <div class="course-grid">
+          <article class="course-card">
+            <div class="course-topline">
+              <span class="course-number">EN</span>
+              <div class="course-meta"><span class="tag">15 sections</span><span class="tag">20 charts</span></div>
+            </div>
+            <h3>Common ggplot2 Methods</h3>
+            <p class="course-title-zh">English edition</p>
+            <p class="course-description">A runnable guide to mappings, geoms, statistical transformations, positions, scales, facets, annotations, reusable themes, plotting functions, and export.</p>
+            <p class="topic-line">Grammar of graphics · distributions · trends · scales · facets · themes · export</p>
+            <div class="language-actions">
+              <a class="button" href="ggplot2_tutorial_en.html" hreflang="en" aria-label="Open the English ggplot2 tutorial">Open English tutorial <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-topline">
+              <span class="course-number">中文</span>
+              <div class="course-meta"><span class="tag">15 章</span><span class="tag">20 幅图</span></div>
+            </div>
+            <h3 lang="zh-CN">ggplot2 常用方法</h3>
+            <p class="course-title-zh" lang="zh-CN">中文实践教程</p>
+            <p class="course-description" lang="zh-CN">从映射、几何对象与统计变换开始，系统学习位置、标度、分面、注释、可复用主题、绘图函数和高质量导出。</p>
+            <p class="topic-line" lang="zh-CN">图形语法 · 分布 · 趋势 · 标度 · 分面 · 主题 · 导出</p>
+            <div class="language-actions">
+              <a class="button" href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN" aria-label="打开 ggplot2 中文实践教程">打开中文教程 <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="topics" aria-labelledby="topics-title">
+      <div class="section-intro">
+        <h2 id="topics-title">From raw values to a clear story.</h2>
+        <p>
+          Use the library by topic when you need a quick answer, or follow the full tutorial for a connected understanding.
+          <span lang="zh-CN">需要快速查用法时可按主题进入；希望系统掌握时请按完整教程学习。</span>
+        </p>
+      </div>
+      <div class="topics-grid">
+        <article class="topic-card"><span class="topic-code">geom_point()</span><h3>Relationships</h3><p>Scatterplots, overplotting, grouping, smooths, and regression lines.</p></article>
+        <article class="topic-card"><span class="topic-code">geom_histogram()</span><h3>Distributions</h3><p>Histograms, densities, boxplots, violins, and meaningful bin widths.</p></article>
+        <article class="topic-card"><span class="topic-code">geom_col()</span><h3>Comparisons</h3><p>Counts versus summaries, ordering, stacking, dodging, and proportions.</p></article>
+        <article class="topic-card"><span class="topic-code">geom_line()</span><h3>Change over time</h3><p>Dates, time-series grouping, reference lines, and readable axis labels.</p></article>
+        <article class="topic-card"><span class="topic-code">facet_wrap()</span><h3>Small multiples</h3><p>Facets, shared scales, coordinate choices, legends, and annotations.</p></article>
+        <article class="topic-card"><span class="topic-code">ggsave()</span><h3>Reusable output</h3><p>Custom themes, plotting functions, dimensions, resolution, and export formats.</p></article>
+      </div>
+    </section>
+
+    <section class="section shell" id="about" aria-labelledby="about-title">
+      <div class="principles">
+        <h2 id="about-title">Learn the decision—not just the command.</h2>
+        <p>
+          The tutorials connect every ggplot2 function to a comparison task, explain what the layer computes, and highlight choices that can change the reader's interpretation.
+          <span lang="zh-CN">课程把每个 ggplot2 函数放回实际比较任务中，说明图层计算了什么，并指出哪些选择会改变读者的理解。</span>
+        </p>
+        <div class="principle-grid">
+          <div class="principle"><strong>Runnable by default</strong><span>Built-in datasets, fixed seeds, and complete code examples.</span></div>
+          <div class="principle"><strong>Modern ggplot2</strong><span>Current syntax for line widths, computed variables, and programmatic mappings.</span></div>
+          <div class="principle"><strong>Bilingual structure</strong><span>Parallel English and Chinese editions with matching examples and figures.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div>
+      <span class="footer-title">The V Lab · ggplot2 Learning Studio</span>
+      <span>Clear graphics, reproducible R, and bilingual learning.</span>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#learning-path">Learning path</a>
+      <a href="ggplot2_tutorial_en.html" hreflang="en">English</a>
+      <a href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN">中文</a>
+      <a href="https://github.com/LaboratoireV/Data_Visulization">GitHub</a>
+    </nav>
+  </footer>
+</body>
+</html>

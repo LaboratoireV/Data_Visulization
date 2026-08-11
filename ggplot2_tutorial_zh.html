@@ -11,7 +11,7 @@
 
 
 
-<title>ggplot2 常用方法：从图形语法到出版级图表</title>
+<title>ggplot2 常用方法 | The V Lab</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -2641,6 +2641,26 @@ window.onload = function() {
   PagedTableDoc.initAll();
 };
 </script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+ul > li > .anchor-section {display: none;}
+</style>
+<style type="text/css">
+a.anchor-section::before {content: '#';font-size: 80%;}
+</style>
+<script>document.addEventListener('DOMContentLoaded', function () {
+  // If section divs is used, we need to put the anchor in the child header
+  const headers = document.querySelectorAll("div.hasAnchor.section[class*='level'] > :first-child")
+
+  headers.forEach(function (x) {
+    // Add to the header node
+    if (!x.classList.contains('hasAnchor')) x.classList.add('hasAnchor')
+    // Remove from the section or div created by Pandoc
+    x.parentElement.classList.remove('hasAnchor')
+  })
+})
+</script>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -2768,6 +2788,285 @@ margin-right: -30px;
 
 
 
+<style type="text/css">:root {
+--navy: #17324d;
+--navy-soft: #244b6d;
+--teal: #0b6b66;
+--teal-dark: #07534f;
+--ink: #203040;
+--muted: #526579;
+--paper: #f6f9fb;
+--surface: #ffffff;
+--line: #d7e1e8;
+--teal-pale: #eaf6f4;
+--blue-pale: #edf5fb;
+--amber-pale: #fff5df;
+--rose-pale: #fff0ef;
+--focus: #c2410c;
+}
+html { scroll-behavior: smooth; }
+body {
+color: var(--ink);
+background: var(--paper);
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+"Hiragino Sans GB", "Microsoft YaHei", Roboto, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.68;
+}
+html[lang^="zh"] body { line-height: 1.78; }
+.main-container {
+max-width: 1160px;
+padding: 0 clamp(1rem, 3vw, 2.25rem) 4rem;
+}
+.vlab-brand {
+display: flex;
+align-items: center;
+gap: 0.65rem;
+width: fit-content;
+min-height: 44px;
+margin: 1.25rem 0 0.65rem;
+color: var(--navy);
+font-weight: 800;
+letter-spacing: 0.085em;
+line-height: 1;
+text-decoration: none;
+text-transform: uppercase;
+}
+.vlab-brand:hover {
+color: var(--teal-dark);
+text-decoration: none;
+}
+.vlab-brand:focus-visible,
+a:focus-visible,
+button:focus-visible {
+outline: 3px solid var(--focus);
+outline-offset: 3px;
+}
+.vlab-mark {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 2rem;
+height: 2rem;
+color: #fff;
+background: linear-gradient(135deg, var(--navy), var(--teal));
+border-radius: 9px;
+box-shadow: 0 5px 14px rgba(23, 50, 77, 0.18);
+font-size: 1rem;
+letter-spacing: 0;
+}
+.vlab-name { font-size: 0.9rem; }
+.vlab-brand + #header { margin-top: 0.65rem; }
+#header {
+margin: 1.25rem 0 1.5rem;
+padding: clamp(1.5rem, 4vw, 2.8rem);
+color: #fff;
+background: linear-gradient(135deg, var(--navy), var(--teal));
+border-radius: 18px;
+box-shadow: 0 12px 32px rgba(23, 50, 77, 0.14);
+}
+#header h1,
+#header h3,
+#header h4,
+#header .author,
+#header .date { color: #fff; }
+#header h1 {
+margin-top: 0;
+font-size: clamp(2.05rem, 5vw, 3.45rem);
+line-height: 1.08;
+letter-spacing: -0.025em;
+}
+#header .subtitle {
+max-width: 780px;
+margin-top: 0.8rem;
+font-weight: 400;
+line-height: 1.4;
+opacity: 0.94;
+}
+h1, h2, h3, h4 {
+color: var(--navy);
+line-height: 1.25;
+font-weight: 700;
+}
+h2 {
+margin-top: 3.1rem;
+padding-bottom: 0.48rem;
+border-bottom: 2px solid var(--line);
+}
+h3 { margin-top: 2rem; }
+p, li { max-width: 82ch; }
+a {
+color: #075ea8;
+text-decoration: underline;
+text-underline-offset: 2px;
+}
+a:hover { color: #034779; }
+.language-switch {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: flex-end;
+gap: 0.55rem;
+margin: -0.25rem 0 1rem;
+font-size: 14px;
+}
+.language-switch a,
+.language-switch span {
+display: inline-flex;
+min-height: 44px;
+align-items: center;
+padding: 0.48rem 0.95rem;
+border: 1px solid var(--line);
+border-radius: 999px;
+background: #fff;
+text-decoration: none;
+}
+.language-switch .language-option.active {
+color: #fff;
+background: var(--teal);
+border-color: var(--teal);
+font-weight: 750;
+}
+.language-switch .language-home {
+margin-right: auto;
+color: var(--navy);
+font-weight: 700;
+}
+.module-bar {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 0.8rem;
+margin: 1.2rem 0 2.2rem;
+}
+.module-stat {
+padding: 0.95rem 1rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: 12px;
+box-shadow: 0 3px 12px rgba(23, 50, 77, 0.04);
+}
+.module-stat strong {
+display: block;
+color: var(--navy);
+font-size: 11px;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+}
+.module-stat span { color: var(--muted); }
+.callout {
+max-width: 84ch;
+margin: 1.35rem 0;
+padding: 1rem 1.2rem;
+background: var(--teal-pale);
+border-left: 5px solid var(--teal);
+border-radius: 0 10px 10px 0;
+}
+.callout.warning {
+background: var(--amber-pale);
+border-left-color: #9a4e00;
+}
+pre {
+overflow-x: auto;
+border: 1px solid var(--line);
+border-radius: 10px;
+box-shadow: 0 3px 12px rgba(23, 50, 77, 0.035);
+}
+pre:not([class]) { background: #fbfcfd; }
+code {
+color: #8c2d62;
+overflow-wrap: anywhere;
+}
+table {
+width: 100%;
+margin: 1.25rem 0;
+border-collapse: collapse;
+background: var(--surface);
+font-size: 0.94rem;
+}
+th {
+color: #fff;
+background: var(--navy);
+font-weight: 750;
+}
+th, td {
+padding: 0.72rem 0.8rem !important;
+border-color: var(--line) !important;
+vertical-align: top;
+}
+tbody tr:nth-child(even) { background: #f7fafc; }
+.figure {
+margin: 1.75rem 0 2.2rem;
+padding: 1rem;
+background: #fff;
+border: 1px solid var(--line);
+border-radius: 14px;
+box-shadow: 0 5px 18px rgba(23, 50, 77, 0.06);
+}
+.figure img {
+display: block;
+max-width: 100%;
+height: auto;
+margin-inline: auto;
+}
+.figure .caption {
+margin-top: 0.8rem;
+color: var(--muted);
+font-size: 0.9rem;
+text-align: center;
+}
+.tocify {
+border: 1px solid var(--line);
+border-radius: 12px;
+background: rgba(255, 255, 255, 0.96);
+box-shadow: 0 7px 22px rgba(23, 50, 77, 0.07);
+}
+.tocify-item a, .tocify-subheader .tocify-item a { color: var(--muted); }
+.tocify-item.active > a, .tocify-item:hover > a { color: #fff; background: var(--teal); }
+.btn, .code-folding-btn, button.dropdown-toggle {
+min-height: 38px;
+border-radius: 8px;
+}
+html[lang^="zh"] .code-folding-btn,
+html[lang^="zh"] button.dropdown-toggle {
+position: relative;
+min-width: 78px;
+color: transparent !important;
+}
+html[lang^="zh"] .code-folding-btn::after,
+html[lang^="zh"] button.dropdown-toggle::after {
+position: absolute;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #333;
+font-size: 12px;
+line-height: 1;
+}
+html[lang^="zh"] .code-folding-btn::after { content: "显示代码"; }
+html[lang^="zh"] .code-folding-btn[aria-expanded="true"]::after { content: "隐藏代码"; }
+html[lang^="zh"] button.dropdown-toggle::after { content: "代码 ▾"; }
+@media (max-width: 767px) {
+.main-container { padding-inline: 1rem; }
+#header { border-radius: 14px; }
+.module-bar { grid-template-columns: 1fr; }
+.language-switch { justify-content: flex-start; }
+.language-switch .language-home { width: 100%; margin-right: 0; }
+table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+@media print {
+body { color: #000; background: #fff; }
+.vlab-brand, .language-switch, #TOC, .tocify, .code-folding-btn,
+button.dropdown-toggle { display: none !important; }
+#header { color: #000; background: #fff; border: 2px solid #000; box-shadow: none; }
+#header h1, #header h3 { color: #000; }
+.main-container { max-width: none; padding: 0; }
+pre, .figure { break-inside: avoid; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
+}
+</style>
 
 
 
@@ -2929,6 +3228,10 @@ font-size: 0.95em;
 
 
 
+<a class="vlab-brand" href="index.html" aria-label="The V Lab website home">
+  <span class="vlab-mark" aria-hidden="true">V</span>
+  <span class="vlab-name">The V Lab</span>
+</a>
 
 <div id="header">
 
@@ -2949,30 +3252,50 @@ font-size: 0.95em;
 </div>
 
 
-<style>
-body {
-font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
-"Noto Sans CJK SC", "Helvetica Neue", Arial, sans-serif;
-line-height: 1.72;
-}
-h1, h2, h3 { line-height: 1.3; }
-code { color: #8c2d62; }
-pre { border-radius: 6px; }
-.callout {
-border-left: 4px solid #2c7fb8;
-background: #eef7fb;
-padding: 0.8rem 1rem;
-margin: 1rem 0;
-border-radius: 0 6px 6px 0;
-}
-.warning {
-border-left-color: #d95f0e;
-background: #fff5eb;
-}
-table { font-size: 0.96em; }
-</style>
-<div id="阅读指南" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> 阅读指南</h1>
+<nav class="language-switch" aria-label="语言选择">
+<a class="language-home" href="index.html">← 学习网站首页</a>
+<a class="language-option" href="ggplot2_tutorial_en.html" lang="en" hreflang="en">English</a>
+<span class="language-option active" aria-current="page">中文</span>
+</nav>
+<script>
+(function () {
+  const labels = {
+    "Show All Code": "显示全部代码",
+    "Hide All Code": "隐藏全部代码",
+    "View Source": "查看源文件"
+  };
+
+  function localizeCodeControls() {
+    document.querySelectorAll(".dropdown-menu a").forEach(function (element) {
+      const text = element.textContent.trim();
+      if (labels[text]) element.textContent = labels[text];
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    localizeCodeControls();
+    new MutationObserver(localizeCodeControls).observe(document.body, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  });
+})();
+</script>
+<div class="module-bar">
+<div class="module-stat">
+<strong>适用对象</strong><span>会运行基础 R 代码的学习者</span>
+</div>
+<div class="module-stat">
+<strong>内容规模</strong><span>15 章 · 20 幅实绘图表</span>
+</div>
+<div class="module-stat">
+<strong>学习方式</strong><span>按顺序学习或按主题查阅</span>
+</div>
+</div>
+<div id="阅读指南" class="section level1 hasAnchor" number="1">
+<h1 class="hasAnchor"><span class="header-section-number">1</span>
+阅读指南<a href="#%E9%98%85%E8%AF%BB%E6%8C%87%E5%8D%97" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>这份教程面向已经会运行 R 代码、希望系统掌握 <strong>ggplot2
 常用方法</strong>的读者。所有示例都使用 R 自带数据或 ggplot2
 内置数据，不需要下载外部数据；代码块可以复制到 RStudio 中直接运行。</p>
@@ -2994,8 +3317,9 @@ theme）</strong>：如何组织小图并完善版式？</li>
 facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 都是在图上增加或修改一层。</p>
 </div>
-<div id="本教程使用的数据" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> 本教程使用的数据</h2>
+<div id="本教程使用的数据" class="section level2 hasAnchor" number="1.1">
+<h2 class="hasAnchor"><span class="header-section-number">1.1</span>
+本教程使用的数据<a href="#%E6%9C%AC%E6%95%99%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <thead>
 <tr class="header">
@@ -3040,10 +3364,12 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 </div>
 </div>
 </div>
-<div id="图形语法基础" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> 图形语法基础</h1>
-<div id="最小可用图形" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> 最小可用图形</h2>
+<div id="图形语法基础" class="section level1 hasAnchor" number="2">
+<h1 class="hasAnchor"><span class="header-section-number">2</span>
+图形语法基础<a href="#%E5%9B%BE%E5%BD%A2%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="最小可用图形" class="section level2 hasAnchor" number="2.1">
+<h2 class="hasAnchor"><span class="header-section-number">2.1</span>
+最小可用图形<a href="#%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%94%A8%E5%9B%BE%E5%BD%A2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>ggplot()</code> 创建画布，<code>aes()</code>
 声明变量到视觉属性的映射，<code>geom_point()</code>
 决定用点来画每一行数据。</p>
@@ -3063,8 +3389,9 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 <p>数据与映射也可分别放在图层里。全局 <code>aes()</code>
 会被后续图层继承；局部 <code>aes()</code> 只影响所在图层。</p>
 </div>
-<div id="映射与固定设置" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> 映射与固定设置</h2>
+<div id="映射与固定设置" class="section level2 hasAnchor" number="2.2">
+<h2 class="hasAnchor"><span class="header-section-number">2.2</span>
+映射与固定设置<a href="#%E6%98%A0%E5%B0%84%E4%B8%8E%E5%9B%BA%E5%AE%9A%E8%AE%BE%E7%BD%AE" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>写在 <code>aes()</code>
 <strong>里面</strong>：把变量映射到视觉属性，会产生数据驱动的变化和图例。</li>
@@ -3095,9 +3422,9 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># 正确：所有点固定为蓝色</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>)</span></code></pre></div>
 </div>
-<div id="全局映射局部映射与分组" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span>
-全局映射、局部映射与分组</h2>
+<div id="全局映射局部映射与分组" class="section level2 hasAnchor" number="2.3">
+<h2 class="hasAnchor"><span class="header-section-number">2.3</span>
+全局映射、局部映射与分组<a href="#%E5%85%A8%E5%B1%80%E6%98%A0%E5%B0%84%E5%B1%80%E9%83%A8%E6%98%A0%E5%B0%84%E4%B8%8E%E5%88%86%E7%BB%84" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>这里点的颜色映射到车型类别，而趋势线只按驱动方式 <code>drv</code>
 分组。<code>group</code>
 控制哪些观察属于同一条线；<code>show.legend = FALSE</code>
@@ -3128,11 +3455,12 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 <code>data</code> 和 <code>aes()</code>。</p>
 </div>
 </div>
-<div id="常用几何对象" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> 常用几何对象</h1>
-<div id="散点图过度重叠透明度与抖动" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span>
-散点图：过度重叠、透明度与抖动</h2>
+<div id="常用几何对象" class="section level1 hasAnchor" number="3">
+<h1 class="hasAnchor"><span class="header-section-number">3</span>
+常用几何对象<a href="#%E5%B8%B8%E7%94%A8%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="散点图过度重叠透明度与抖动" class="section level2 hasAnchor" number="3.1">
+<h2 class="hasAnchor"><span class="header-section-number">3.1</span>
+散点图：过度重叠、透明度与抖动<a href="#%E6%95%A3%E7%82%B9%E5%9B%BE%E8%BF%87%E5%BA%A6%E9%87%8D%E5%8F%A0%E9%80%8F%E6%98%8E%E5%BA%A6%E4%B8%8E%E6%8A%96%E5%8A%A8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>离散或取值重复的数据容易重叠。常见对策是减小点、增加透明度，或使用
 <code>geom_jitter()</code> 轻微扰动位置。</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="fu">factor</span>(cyl), cty, <span class="at">color =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
@@ -3152,8 +3480,9 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 <p><code>geom_jitter()</code>
 适合展示个体观察，但抖动只是显示手段，不应被解释成真实测量误差。大数据还可考虑二维分箱、等高线或抽样。</p>
 </div>
-<div id="平滑曲线与回归线" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> 平滑曲线与回归线</h2>
+<div id="平滑曲线与回归线" class="section level2 hasAnchor" number="3.2">
+<h2 class="hasAnchor"><span class="header-section-number">3.2</span>
+平滑曲线与回归线<a href="#%E5%B9%B3%E6%BB%91%E6%9B%B2%E7%BA%BF%E4%B8%8E%E5%9B%9E%E5%BD%92%E7%BA%BF" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>geom_smooth()</code>
 默认方法会随数据量变化。为保证分析含义明确，最好显式写出方法：</p>
 <ul>
@@ -3181,8 +3510,9 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 </div>
 <p>注意：平滑线描述关联，不自动代表因果关系；外推到数据范围之外尤其危险。</p>
 </div>
-<div id="线图与时间序列" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> 线图与时间序列</h2>
+<div id="线图与时间序列" class="section level2 hasAnchor" number="3.3">
+<h2 class="hasAnchor"><span class="header-section-number">3.3</span>
+线图与时间序列<a href="#%E7%BA%BF%E5%9B%BE%E4%B8%8E%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>geom_line()</code> 会按 x
 排序后连接点，适合时间序列；<code>geom_path()</code>
 按数据行顺序连接，适合轨迹。多条线必须有正确的
@@ -3211,9 +3541,9 @@ facet_*() + coord_*() + theme_*()</code>。每个 <code>+</code>
 <p>时间变量应是 <code>Date</code>
 或日期时间类型，而不是普通字符串。多组时间序列还要检查每组内部是否按时间排序。</p>
 </div>
-<div id="柱状图geom_bar-与-geom_col" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span>
-柱状图：<code>geom_bar()</code> 与 <code>geom_col()</code></h2>
+<div id="柱状图geom_bar-与-geom_col" class="section level2 hasAnchor" number="3.4">
+<h2 class="hasAnchor"><span class="header-section-number">3.4</span>
+柱状图：<code>geom_bar()</code> 与 <code>geom_col()</code><a href="#%E6%9F%B1%E7%8A%B6%E5%9B%BEgeom_bar-%E4%B8%8E-geom_col" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>这两个函数外观相似，数据含义不同：</p>
 <ul>
 <li><code>geom_bar()</code>：只有 x，默认
@@ -3253,8 +3583,9 @@ y，直接画已经汇总好的数值。</li>
 </p>
 </div>
 </div>
-<div id="堆叠并列与比例" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> 堆叠、并列与比例</h2>
+<div id="堆叠并列与比例" class="section level2 hasAnchor" number="3.5">
+<h2 class="hasAnchor"><span class="header-section-number">3.5</span>
+堆叠、并列与比例<a href="#%E5%A0%86%E5%8F%A0%E5%B9%B6%E5%88%97%E4%B8%8E%E6%AF%94%E4%BE%8B" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>position</code> 控制同一 x 类别中的多个组如何摆放：</p>
 <table>
 <thead>
@@ -3309,10 +3640,12 @@ y，直接画已经汇总好的数值。</li>
 或另画数量图。</p>
 </div>
 </div>
-<div id="分布与统计变换" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> 分布与统计变换</h1>
-<div id="直方图与密度图" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> 直方图与密度图</h2>
+<div id="分布与统计变换" class="section level1 hasAnchor" number="4">
+<h1 class="hasAnchor"><span class="header-section-number">4</span>
+分布与统计变换<a href="#%E5%88%86%E5%B8%83%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%8F%98%E6%8D%A2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="直方图与密度图" class="section level2 hasAnchor" number="4.1">
+<h2 class="hasAnchor"><span class="header-section-number">4.1</span>
+直方图与密度图<a href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E4%B8%8E%E5%AF%86%E5%BA%A6%E5%9B%BE" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>直方图的结论可能随箱宽变化。<code>bins</code>
 指箱数，<code>binwidth</code>
 指每箱宽度；分析时应根据测量精度与样本规模尝试多个合理值。下面把直方图转换为密度尺度，再叠加核密度曲线。</p>
@@ -3338,8 +3671,9 @@ y，直接画已经汇总好的数值。</li>
 <p><code>after_stat(density)</code> 引用统计变换产生的变量，是旧写法
 <code>..density..</code> 的现代替代。</p>
 </div>
-<div id="箱线图与小提琴图" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> 箱线图与小提琴图</h2>
+<div id="箱线图与小提琴图" class="section level2 hasAnchor" number="4.2">
+<h2 class="hasAnchor"><span class="header-section-number">4.2</span>
+箱线图与小提琴图<a href="#%E7%AE%B1%E7%BA%BF%E5%9B%BE%E4%B8%8E%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>箱线图紧凑地显示中位数、四分位距和异常值；小提琴图显示分布形状。叠加使用时，不要让元素互相遮挡。</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>mpg_four <span class="ot">&lt;-</span> <span class="fu">subset</span>(mpg, class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;compact&quot;</span>, <span class="st">&quot;midsize&quot;</span>, <span class="st">&quot;pickup&quot;</span>, <span class="st">&quot;suv&quot;</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
@@ -3361,9 +3695,9 @@ y，直接画已经汇总好的数值。</li>
 </div>
 <p>小样本的小提琴形状可能不稳定；必要时叠加抖动点并报告每组样本量。</p>
 </div>
-<div id="stat_summary边汇总边作图" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span>
-<code>stat_summary()</code>：边汇总边作图</h2>
+<div id="stat_summary边汇总边作图" class="section level2 hasAnchor" number="4.3">
+<h2 class="hasAnchor"><span class="header-section-number">4.3</span>
+<code>stat_summary()</code>：边汇总边作图<a href="#stat_summary%E8%BE%B9%E6%B1%87%E6%80%BB%E8%BE%B9%E4%BD%9C%E5%9B%BE" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>stat_summary()</code> 可直接按 x
 分组计算中心值与区间。下面的点表示均值，误差线表示“均值 ± 1
 个标准差”；它不是置信区间，图注应写清定义。</p>
@@ -3396,12 +3730,12 @@ y，直接画已经汇总好的数值。</li>
 <code>geom_errorbar()</code> 作图，便于审计。</p>
 </div>
 </div>
-<div id="分面用小多图比较组别" class="section level1" number="5">
-<h1><span class="header-section-number">5</span>
-分面：用小多图比较组别</h1>
-<div id="facet_wrap-与-facet_grid" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span>
-<code>facet_wrap()</code> 与 <code>facet_grid()</code></h2>
+<div id="分面用小多图比较组别" class="section level1 hasAnchor" number="5">
+<h1 class="hasAnchor"><span class="header-section-number">5</span>
+分面：用小多图比较组别<a href="#%E5%88%86%E9%9D%A2%E7%94%A8%E5%B0%8F%E5%A4%9A%E5%9B%BE%E6%AF%94%E8%BE%83%E7%BB%84%E5%88%AB" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="facet_wrap-与-facet_grid" class="section level2 hasAnchor" number="5.1">
+<h2 class="hasAnchor"><span class="header-section-number">5.1</span>
+<code>facet_wrap()</code> 与 <code>facet_grid()</code><a href="#facet_wrap-%E4%B8%8E-facet_grid" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>facet_wrap(~ var)</code>：一个分面变量，自动换行；</li>
 <li><code>facet_grid(rows ~ cols)</code>：行列组合有明确语义；</li>
@@ -3445,12 +3779,12 @@ y，直接画已经汇总好的数值。</li>
 <p>空面板有时是重要信息，说明某些组合不存在；不要只为“好看”就删除它。</p>
 </div>
 </div>
-<div id="标度控制数据如何映射到视觉属性" class="section level1" number="6">
-<h1><span class="header-section-number">6</span>
-标度：控制数据如何映射到视觉属性</h1>
-<div id="连续离散与手动标度" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span>
-连续、离散与手动标度</h2>
+<div id="标度控制数据如何映射到视觉属性" class="section level1 hasAnchor" number="6">
+<h1 class="hasAnchor"><span class="header-section-number">6</span>
+标度：控制数据如何映射到视觉属性<a href="#%E6%A0%87%E5%BA%A6%E6%8E%A7%E5%88%B6%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E6%98%A0%E5%B0%84%E5%88%B0%E8%A7%86%E8%A7%89%E5%B1%9E%E6%80%A7" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="连续离散与手动标度" class="section level2 hasAnchor" number="6.1">
+<h2 class="hasAnchor"><span class="header-section-number">6.1</span>
+连续、离散与手动标度<a href="#%E8%BF%9E%E7%BB%AD%E7%A6%BB%E6%95%A3%E4%B8%8E%E6%89%8B%E5%8A%A8%E6%A0%87%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>标度函数通常采用 <code>scale_&lt;视觉属性&gt;_&lt;类型&gt;()</code>
 命名，例如：</p>
 <ul>
@@ -3487,9 +3821,9 @@ y，直接画已经汇总好的数值。</li>
 </div>
 <p>对数轴不能显示零或负值，并会改变视觉距离的含义。轴标题或图注明确说明变换。</p>
 </div>
-<div id="手动颜色与类别顺序" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span>
-手动颜色与类别顺序</h2>
+<div id="手动颜色与类别顺序" class="section level2 hasAnchor" number="6.2">
+<h2 class="hasAnchor"><span class="header-section-number">6.2</span>
+手动颜色与类别顺序<a href="#%E6%89%8B%E5%8A%A8%E9%A2%9C%E8%89%B2%E4%B8%8E%E7%B1%BB%E5%88%AB%E9%A1%BA%E5%BA%8F" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>手动颜色应使用有名称的向量，使颜色与类别按名称匹配，而不是依赖偶然的因子顺序。</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>drive_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1b9e77&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;#d95f02&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;#7570b3&quot;</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
@@ -3519,9 +3853,9 @@ y，直接画已经汇总好的数值。</li>
 <span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># 按某个数值汇总结果重排</span></span>
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>dat<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">reorder</span>(dat<span class="sc">$</span>group, dat<span class="sc">$</span>value, <span class="at">FUN =</span> median)</span></code></pre></div>
 </div>
-<div id="limits-与视觉缩放的区别" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> <code>limits</code>
-与视觉缩放的区别</h2>
+<div id="limits-与视觉缩放的区别" class="section level2 hasAnchor" number="6.3">
+<h2 class="hasAnchor"><span class="header-section-number">6.3</span>
+<code>limits</code> 与视觉缩放的区别<a href="#limits-%E4%B8%8E%E8%A7%86%E8%A7%89%E7%BC%A9%E6%94%BE%E7%9A%84%E5%8C%BA%E5%88%AB" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>这是一个影响统计结果的重要区别：</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># 会在统计计算前删除范围外的数据；平滑线、箱线图等可能改变</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>))</span>
@@ -3532,11 +3866,12 @@ y，直接画已经汇总好的数值。</li>
 <code>coord_cartesian()</code>。如果确实需要过滤数据，最好在绘图前显式过滤，让分析意图清楚可见。</p>
 </div>
 </div>
-<div id="坐标系统标签与注释" class="section level1" number="7">
-<h1><span class="header-section-number">7</span>
-坐标系统、标签与注释</h1>
-<div id="坐标系统" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> 坐标系统</h2>
+<div id="坐标系统标签与注释" class="section level1 hasAnchor" number="7">
+<h1 class="hasAnchor"><span class="header-section-number">7</span>
+坐标系统、标签与注释<a href="#%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%B3%A8%E9%87%8A" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="坐标系统" class="section level2 hasAnchor" number="7.1">
+<h2 class="hasAnchor"><span class="header-section-number">7.1</span>
+坐标系统<a href="#%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>coord_cartesian()</code>：缩放窗口而不删除数据；</li>
 <li><code>coord_fixed(ratio = 1)</code>：固定 x、y 单位的物理比例；</li>
@@ -3546,9 +3881,9 @@ y，直接画已经汇总好的数值。</li>
 </ul>
 <p>坐标系统作用在标度之后。对需要精确比较的图，位置和长度通常比角度、面积更易读。</p>
 </div>
-<div id="标题标签参考线与注释" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span>
-标题、标签、参考线与注释</h2>
+<div id="标题标签参考线与注释" class="section level2 hasAnchor" number="7.2">
+<h2 class="hasAnchor"><span class="header-section-number">7.2</span>
+标题、标签、参考线与注释<a href="#%E6%A0%87%E9%A2%98%E6%A0%87%E7%AD%BE%E5%8F%82%E8%80%83%E7%BA%BF%E4%B8%8E%E6%B3%A8%E9%87%8A" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>labs()</code>
 统一管理标题、副标题、坐标轴、图例标题和图注。<code>annotate()</code>
 添加单个说明；<code>geom_text()</code> / <code>geom_label()</code>
@@ -3590,11 +3925,12 @@ y，直接画已经汇总好的数值。</li>
 <code>grid</code> 包；它们随 R 一起安装，无需额外依赖。</p>
 </div>
 </div>
-<div id="主题图例与可复用样式" class="section level1" number="8">
-<h1><span class="header-section-number">8</span>
-主题、图例与可复用样式</h1>
-<div id="主题控制什么" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> 主题控制什么</h2>
+<div id="主题图例与可复用样式" class="section level1 hasAnchor" number="8">
+<h1 class="hasAnchor"><span class="header-section-number">8</span>
+主题、图例与可复用样式<a href="#%E4%B8%BB%E9%A2%98%E5%9B%BE%E4%BE%8B%E4%B8%8E%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%A0%B7%E5%BC%8F" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="主题控制什么" class="section level2 hasAnchor" number="8.1">
+<h2 class="hasAnchor"><span class="header-section-number">8.1</span>
+主题控制什么<a href="#%E4%B8%BB%E9%A2%98%E6%8E%A7%E5%88%B6%E4%BB%80%E4%B9%88" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>主题只控制<strong>非数据元素</strong>，不会改变数据映射。常用完整主题有
 <code>theme_minimal()</code>、<code>theme_classic()</code>、<code>theme_bw()</code>；<code>theme()</code>
 用于局部调整：</p>
@@ -3632,8 +3968,9 @@ y，直接画已经汇总好的数值。</li>
 <code>theme(legend.position = &quot;none&quot;)</code> 删除不必要的图例。</p>
 </div>
 </div>
-<div id="二维汇总热图" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> 二维汇总：热图</h1>
+<div id="二维汇总热图" class="section level1 hasAnchor" number="9">
+<h1 class="hasAnchor"><span class="header-section-number">9</span>
+二维汇总：热图<a href="#%E4%BA%8C%E7%BB%B4%E6%B1%87%E6%80%BB%E7%83%AD%E5%9B%BE" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>当两个轴都是类别、单元格表示数量或数值时，<code>geom_tile()</code>
 很实用。</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>heat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(<span class="at">cyl =</span> mpg<span class="sc">$</span>cyl, <span class="at">drv =</span> mpg<span class="sc">$</span>drv))</span>
@@ -3659,9 +3996,9 @@ y，直接画已经汇总好的数值。</li>
 <p>连续色板应具有感知上相对均匀的亮度变化。<code>viridis</code>
 系列通常对色觉差异和灰度打印更友好。若低值单元格文字不清楚，可根据填充值动态切换文字颜色。</p>
 </div>
-<div id="在函数中使用-ggplot2" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> 在函数中使用
-ggplot2</h1>
+<div id="在函数中使用-ggplot2" class="section level1 hasAnchor" number="10">
+<h1 class="hasAnchor"><span class="header-section-number">10</span>
+在函数中使用 ggplot2<a href="#%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BD%BF%E7%94%A8-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>不要再使用已弃用的
 <code>aes_string()</code>。在函数中按列名编程，可使用
 <code>.data[[...]]</code>：</p>
@@ -3689,8 +4026,9 @@ ggplot2</h1>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
 <span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;函数生成的图仍可继续扩展&quot;</span>)</span></code></pre></div>
 </div>
-<div id="导出高质量图表" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> 导出高质量图表</h1>
+<div id="导出高质量图表" class="section level1 hasAnchor" number="11">
+<h1 class="hasAnchor"><span class="header-section-number">11</span>
+导出高质量图表<a href="#%E5%AF%BC%E5%87%BA%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9B%BE%E8%A1%A8" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><code>ggsave()</code> 默认保存最后显示的图；在脚本和函数中，显式传入
 <code>plot</code> 更安全。宽高与 <code>dpi</code>
 共同决定栅格图像像素尺寸。</p>
@@ -3720,9 +4058,9 @@ ggplot2</h1>
 <li>先按最终展示尺寸检查字号，而不是只看 RStudio 的缩放预览。</li>
 </ul>
 </div>
-<div id="常见问题与排错清单" class="section level1" number="12">
-<h1><span class="header-section-number">12</span>
-常见问题与排错清单</h1>
+<div id="常见问题与排错清单" class="section level1 hasAnchor" number="12">
+<h1 class="hasAnchor"><span class="header-section-number">12</span>
+常见问题与排错清单<a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8E%92%E9%94%99%E6%B8%85%E5%8D%95" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <table>
 <colgroup>
 <col width="33%" />
@@ -3798,8 +4136,9 @@ ggplot2</h1>
 TRUE</code>。先确认缺失值为何存在、是否应删除，以及删除是否会改变结论。</p>
 </div>
 </div>
-<div id="快速选择指南" class="section level1" number="13">
-<h1><span class="header-section-number">13</span> 快速选择指南</h1>
+<div id="快速选择指南" class="section level1 hasAnchor" number="13">
+<h1 class="hasAnchor"><span class="header-section-number">13</span>
+快速选择指南<a href="#%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9%E6%8C%87%E5%8D%97" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <table>
 <colgroup>
 <col width="33%" />
@@ -3860,9 +4199,9 @@ TRUE</code>。先确认缺失值为何存在、是否应删除，以及删除是
 </tbody>
 </table>
 </div>
-<div id="一套可靠的作图工作流" class="section level1" number="14">
-<h1><span class="header-section-number">14</span>
-一套可靠的作图工作流</h1>
+<div id="一套可靠的作图工作流" class="section level1 hasAnchor" number="14">
+<h1 class="hasAnchor"><span class="header-section-number">14</span>
+一套可靠的作图工作流<a href="#%E4%B8%80%E5%A5%97%E5%8F%AF%E9%9D%A0%E7%9A%84%E4%BD%9C%E5%9B%BE%E5%B7%A5%E4%BD%9C%E6%B5%81" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ol style="list-style-type: decimal">
 <li>先确认分析单位、缺失值、变量类型与合理范围。</li>
 <li>用最简单的几何对象画原始数据，先看异常与重叠。</li>
@@ -3874,8 +4213,9 @@ TRUE</code>。先确认缺失值为何存在、是否应删除，以及删除是
 固定尺寸和格式，并保留生成图表的代码与会话信息。</li>
 </ol>
 </div>
-<div id="版本与复现信息" class="section level1" number="15">
-<h1><span class="header-section-number">15</span> 版本与复现信息</h1>
+<div id="版本与复现信息" class="section level1 hasAnchor" number="15">
+<h1 class="hasAnchor"><span class="header-section-number">15</span>
+版本与复现信息<a href="#%E7%89%88%E6%9C%AC%E4%B8%8E%E5%A4%8D%E7%8E%B0%E4%BF%A1%E6%81%AF" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>本文档使用现代 ggplot2 语法：线宽使用
 <code>linewidth</code>，统计变量使用
 <code>after_stat()</code>，编程接口使用 <code>.data[[...]]</code>。</p>

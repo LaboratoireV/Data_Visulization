@@ -1,3 +1,16 @@
-# Keep R Markdown source files local.
-*.Rmd
-*.rmd
+# Local project state and dependencies
+.DS_Store
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+.Rlib/
+
+# Keep all R Markdown source files local, regardless of letter case.
+*.[Rr][Mm][Dd]
+
+# R Markdown intermediate output
+*_cache/
+*_files/
+*.utf8.md
+*.knit.md

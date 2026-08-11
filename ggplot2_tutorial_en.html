@@ -11,7 +11,7 @@
 
 
 
-<title>Common ggplot2 Methods: From the Grammar of Graphics to Publication-Ready Plots</title>
+<title>Common ggplot2 Methods | The V Lab</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -2641,6 +2641,26 @@ window.onload = function() {
   PagedTableDoc.initAll();
 };
 </script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+ul > li > .anchor-section {display: none;}
+</style>
+<style type="text/css">
+a.anchor-section::before {content: '#';font-size: 80%;}
+</style>
+<script>document.addEventListener('DOMContentLoaded', function () {
+  // If section divs is used, we need to put the anchor in the child header
+  const headers = document.querySelectorAll("div.hasAnchor.section[class*='level'] > :first-child")
+
+  headers.forEach(function (x) {
+    // Add to the header node
+    if (!x.classList.contains('hasAnchor')) x.classList.add('hasAnchor')
+    // Remove from the section or div created by Pandoc
+    x.parentElement.classList.remove('hasAnchor')
+  })
+})
+</script>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -2768,6 +2788,285 @@ margin-right: -30px;
 
 
 
+<style type="text/css">:root {
+--navy: #17324d;
+--navy-soft: #244b6d;
+--teal: #0b6b66;
+--teal-dark: #07534f;
+--ink: #203040;
+--muted: #526579;
+--paper: #f6f9fb;
+--surface: #ffffff;
+--line: #d7e1e8;
+--teal-pale: #eaf6f4;
+--blue-pale: #edf5fb;
+--amber-pale: #fff5df;
+--rose-pale: #fff0ef;
+--focus: #c2410c;
+}
+html { scroll-behavior: smooth; }
+body {
+color: var(--ink);
+background: var(--paper);
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+"Hiragino Sans GB", "Microsoft YaHei", Roboto, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.68;
+}
+html[lang^="zh"] body { line-height: 1.78; }
+.main-container {
+max-width: 1160px;
+padding: 0 clamp(1rem, 3vw, 2.25rem) 4rem;
+}
+.vlab-brand {
+display: flex;
+align-items: center;
+gap: 0.65rem;
+width: fit-content;
+min-height: 44px;
+margin: 1.25rem 0 0.65rem;
+color: var(--navy);
+font-weight: 800;
+letter-spacing: 0.085em;
+line-height: 1;
+text-decoration: none;
+text-transform: uppercase;
+}
+.vlab-brand:hover {
+color: var(--teal-dark);
+text-decoration: none;
+}
+.vlab-brand:focus-visible,
+a:focus-visible,
+button:focus-visible {
+outline: 3px solid var(--focus);
+outline-offset: 3px;
+}
+.vlab-mark {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 2rem;
+height: 2rem;
+color: #fff;
+background: linear-gradient(135deg, var(--navy), var(--teal));
+border-radius: 9px;
+box-shadow: 0 5px 14px rgba(23, 50, 77, 0.18);
+font-size: 1rem;
+letter-spacing: 0;
+}
+.vlab-name { font-size: 0.9rem; }
+.vlab-brand + #header { margin-top: 0.65rem; }
+#header {
+margin: 1.25rem 0 1.5rem;
+padding: clamp(1.5rem, 4vw, 2.8rem);
+color: #fff;
+background: linear-gradient(135deg, var(--navy), var(--teal));
+border-radius: 18px;
+box-shadow: 0 12px 32px rgba(23, 50, 77, 0.14);
+}
+#header h1,
+#header h3,
+#header h4,
+#header .author,
+#header .date { color: #fff; }
+#header h1 {
+margin-top: 0;
+font-size: clamp(2.05rem, 5vw, 3.45rem);
+line-height: 1.08;
+letter-spacing: -0.025em;
+}
+#header .subtitle {
+max-width: 780px;
+margin-top: 0.8rem;
+font-weight: 400;
+line-height: 1.4;
+opacity: 0.94;
+}
+h1, h2, h3, h4 {
+color: var(--navy);
+line-height: 1.25;
+font-weight: 700;
+}
+h2 {
+margin-top: 3.1rem;
+padding-bottom: 0.48rem;
+border-bottom: 2px solid var(--line);
+}
+h3 { margin-top: 2rem; }
+p, li { max-width: 82ch; }
+a {
+color: #075ea8;
+text-decoration: underline;
+text-underline-offset: 2px;
+}
+a:hover { color: #034779; }
+.language-switch {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: flex-end;
+gap: 0.55rem;
+margin: -0.25rem 0 1rem;
+font-size: 14px;
+}
+.language-switch a,
+.language-switch span {
+display: inline-flex;
+min-height: 44px;
+align-items: center;
+padding: 0.48rem 0.95rem;
+border: 1px solid var(--line);
+border-radius: 999px;
+background: #fff;
+text-decoration: none;
+}
+.language-switch .language-option.active {
+color: #fff;
+background: var(--teal);
+border-color: var(--teal);
+font-weight: 750;
+}
+.language-switch .language-home {
+margin-right: auto;
+color: var(--navy);
+font-weight: 700;
+}
+.module-bar {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 0.8rem;
+margin: 1.2rem 0 2.2rem;
+}
+.module-stat {
+padding: 0.95rem 1rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: 12px;
+box-shadow: 0 3px 12px rgba(23, 50, 77, 0.04);
+}
+.module-stat strong {
+display: block;
+color: var(--navy);
+font-size: 11px;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+}
+.module-stat span { color: var(--muted); }
+.callout {
+max-width: 84ch;
+margin: 1.35rem 0;
+padding: 1rem 1.2rem;
+background: var(--teal-pale);
+border-left: 5px solid var(--teal);
+border-radius: 0 10px 10px 0;
+}
+.callout.warning {
+background: var(--amber-pale);
+border-left-color: #9a4e00;
+}
+pre {
+overflow-x: auto;
+border: 1px solid var(--line);
+border-radius: 10px;
+box-shadow: 0 3px 12px rgba(23, 50, 77, 0.035);
+}
+pre:not([class]) { background: #fbfcfd; }
+code {
+color: #8c2d62;
+overflow-wrap: anywhere;
+}
+table {
+width: 100%;
+margin: 1.25rem 0;
+border-collapse: collapse;
+background: var(--surface);
+font-size: 0.94rem;
+}
+th {
+color: #fff;
+background: var(--navy);
+font-weight: 750;
+}
+th, td {
+padding: 0.72rem 0.8rem !important;
+border-color: var(--line) !important;
+vertical-align: top;
+}
+tbody tr:nth-child(even) { background: #f7fafc; }
+.figure {
+margin: 1.75rem 0 2.2rem;
+padding: 1rem;
+background: #fff;
+border: 1px solid var(--line);
+border-radius: 14px;
+box-shadow: 0 5px 18px rgba(23, 50, 77, 0.06);
+}
+.figure img {
+display: block;
+max-width: 100%;
+height: auto;
+margin-inline: auto;
+}
+.figure .caption {
+margin-top: 0.8rem;
+color: var(--muted);
+font-size: 0.9rem;
+text-align: center;
+}
+.tocify {
+border: 1px solid var(--line);
+border-radius: 12px;
+background: rgba(255, 255, 255, 0.96);
+box-shadow: 0 7px 22px rgba(23, 50, 77, 0.07);
+}
+.tocify-item a, .tocify-subheader .tocify-item a { color: var(--muted); }
+.tocify-item.active > a, .tocify-item:hover > a { color: #fff; background: var(--teal); }
+.btn, .code-folding-btn, button.dropdown-toggle {
+min-height: 38px;
+border-radius: 8px;
+}
+html[lang^="zh"] .code-folding-btn,
+html[lang^="zh"] button.dropdown-toggle {
+position: relative;
+min-width: 78px;
+color: transparent !important;
+}
+html[lang^="zh"] .code-folding-btn::after,
+html[lang^="zh"] button.dropdown-toggle::after {
+position: absolute;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #333;
+font-size: 12px;
+line-height: 1;
+}
+html[lang^="zh"] .code-folding-btn::after { content: "显示代码"; }
+html[lang^="zh"] .code-folding-btn[aria-expanded="true"]::after { content: "隐藏代码"; }
+html[lang^="zh"] button.dropdown-toggle::after { content: "代码 ▾"; }
+@media (max-width: 767px) {
+.main-container { padding-inline: 1rem; }
+#header { border-radius: 14px; }
+.module-bar { grid-template-columns: 1fr; }
+.language-switch { justify-content: flex-start; }
+.language-switch .language-home { width: 100%; margin-right: 0; }
+table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+@media print {
+body { color: #000; background: #fff; }
+.vlab-brand, .language-switch, #TOC, .tocify, .code-folding-btn,
+button.dropdown-toggle { display: none !important; }
+#header { color: #000; background: #fff; border: 2px solid #000; box-shadow: none; }
+#header h1, #header h3 { color: #000; }
+.main-container { max-width: none; padding: 0; }
+pre, .figure { break-inside: avoid; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
+}
+</style>
 
 
 
@@ -2929,6 +3228,10 @@ font-size: 0.95em;
 
 
 
+<a class="vlab-brand" href="index.html" aria-label="The V Lab website home">
+  <span class="vlab-mark" aria-hidden="true">V</span>
+  <span class="vlab-name">The V Lab</span>
+</a>
 
 <div id="header">
 
@@ -2949,31 +3252,26 @@ Graphics to Publication-Ready Plots</h1>
 </div>
 
 
-<style>
-body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
-Arial, sans-serif;
-line-height: 1.72;
-}
-h1, h2, h3 { line-height: 1.3; }
-code { color: #8c2d62; }
-pre { border-radius: 6px; }
-.callout {
-border-left: 4px solid #2c7fb8;
-background: #eef7fb;
-padding: 0.8rem 1rem;
-margin: 1rem 0;
-border-radius: 0 6px 6px 0;
-}
-.warning {
-border-left-color: #d95f0e;
-background: #fff5eb;
-}
-table { font-size: 0.96em; }
-</style>
-<div id="how-to-use-this-guide" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> How to use this
-guide</h1>
+<nav class="language-switch" aria-label="Language selection">
+<a class="language-home" href="index.html">← Learning studio home</a>
+<span class="language-option active" aria-current="page">English</span>
+<a class="language-option" href="ggplot2_tutorial_zh.html" lang="zh-CN" hreflang="zh-CN">中文</a>
+</nav>
+<div class="module-bar">
+<div class="module-stat">
+<strong>Audience</strong><span>Readers who can run basic R code</span>
+</div>
+<div class="module-stat">
+<strong>Scope</strong><span>15 sections · 20 rendered charts</span>
+</div>
+<div class="module-stat">
+<strong>Format</strong><span>Follow in sequence or browse by
+topic</span>
+</div>
+</div>
+<div id="how-to-use-this-guide" class="section level1 hasAnchor" number="1">
+<h1 class="hasAnchor"><span class="header-section-number">1</span> How
+to use this guide<a href="#how-to-use-this-guide" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This guide is for readers who can run R code and want a systematic
 introduction to the <strong>ggplot2 methods used most often in real
 work</strong>. Every example uses a base R or ggplot2 built-in dataset,
@@ -3001,9 +3299,9 @@ non-data styling be organized?</li>
 scale_*() + facet_*() + coord_*() + theme_*()</code>. Each
 <code>+</code> adds or modifies a layer.</p>
 </div>
-<div id="datasets-used-in-this-guide" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Datasets used in this
-guide</h2>
+<div id="datasets-used-in-this-guide" class="section level2 hasAnchor" number="1.1">
+<h2 class="hasAnchor"><span class="header-section-number">1.1</span>
+Datasets used in this guide<a href="#datasets-used-in-this-guide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="33%" />
@@ -3055,12 +3353,12 @@ diamonds</td>
 </div>
 </div>
 </div>
-<div id="grammar-of-graphics-fundamentals" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Grammar of graphics
-fundamentals</h1>
-<div id="the-smallest-useful-plot" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> The smallest useful
-plot</h2>
+<div id="grammar-of-graphics-fundamentals" class="section level1 hasAnchor" number="2">
+<h1 class="hasAnchor"><span class="header-section-number">2</span>
+Grammar of graphics fundamentals<a href="#grammar-of-graphics-fundamentals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="the-smallest-useful-plot" class="section level2 hasAnchor" number="2.1">
+<h2 class="hasAnchor"><span class="header-section-number">2.1</span> The
+smallest useful plot<a href="#the-smallest-useful-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>ggplot()</code> creates the canvas, <code>aes()</code> declares
 mappings from variables to visual properties, and
 <code>geom_point()</code> says to draw one point for each row.</p>
@@ -3081,9 +3379,9 @@ Figure 1: Engine displacement versus highway fuel economy.
 <code>aes()</code> is inherited by later layers; a local
 <code>aes()</code> affects only its own layer.</p>
 </div>
-<div id="mapping-versus-setting" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Mapping versus
-setting</h2>
+<div id="mapping-versus-setting" class="section level2 hasAnchor" number="2.2">
+<h2 class="hasAnchor"><span class="header-section-number">2.2</span>
+Mapping versus setting<a href="#mapping-versus-setting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Inside <code>aes()</code>: <strong>map</strong> a variable to a
 visual property. This creates data-driven variation and usually a
@@ -3117,9 +3415,9 @@ category and creates a legend rather than setting points to blue.</p>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Correct: fixes every point to the same blue</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;steelblue&quot;</span>)</span></code></pre></div>
 </div>
-<div id="global-mappings-local-mappings-and-grouping" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Global mappings,
-local mappings, and grouping</h2>
+<div id="global-mappings-local-mappings-and-grouping" class="section level2 hasAnchor" number="2.3">
+<h2 class="hasAnchor"><span class="header-section-number">2.3</span>
+Global mappings, local mappings, and grouping<a href="#global-mappings-local-mappings-and-grouping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, point color is mapped to vehicle class while trend lines are
 grouped only by drive type (<code>drv</code>). <code>group</code>
 controls which observations belong to one line, and
@@ -3150,11 +3448,12 @@ Figure 3: Local mappings let layers use different grouping rules.
 <code>data</code> and <code>aes()</code>.</p>
 </div>
 </div>
-<div id="common-geoms" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Common geoms</h1>
-<div id="scatterplots-overplotting-transparency-and-jitter" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Scatterplots:
-overplotting, transparency, and jitter</h2>
+<div id="common-geoms" class="section level1 hasAnchor" number="3">
+<h1 class="hasAnchor"><span class="header-section-number">3</span>
+Common geoms<a href="#common-geoms" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="scatterplots-overplotting-transparency-and-jitter" class="section level2 hasAnchor" number="3.1">
+<h2 class="hasAnchor"><span class="header-section-number">3.1</span>
+Scatterplots: overplotting, transparency, and jitter<a href="#scatterplots-overplotting-transparency-and-jitter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Discrete or repeated values often overlap. Common remedies are
 smaller points, transparency, or <code>geom_jitter()</code> to add a
 small visual displacement.</p>
@@ -3178,9 +3477,9 @@ the displacement is only a display technique and must not be interpreted
 as measurement error. For large data, also consider two-dimensional
 bins, contours, or sampling.</p>
 </div>
-<div id="smooths-and-regression-lines" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Smooths and
-regression lines</h2>
+<div id="smooths-and-regression-lines" class="section level2 hasAnchor" number="3.2">
+<h2 class="hasAnchor"><span class="header-section-number">3.2</span>
+Smooths and regression lines<a href="#smooths-and-regression-lines" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The default method used by <code>geom_smooth()</code> depends on data
 size. For a clear analytical meaning, specify the method explicitly:</p>
 <ul>
@@ -3211,9 +3510,9 @@ confidence bands.
 <p>A smooth describes association, not automatic causation.
 Extrapolating beyond the observed x-range is especially risky.</p>
 </div>
-<div id="lines-and-time-series" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Lines and time
-series</h2>
+<div id="lines-and-time-series" class="section level2 hasAnchor" number="3.3">
+<h2 class="hasAnchor"><span class="header-section-number">3.3</span>
+Lines and time series<a href="#lines-and-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>geom_line()</code> sorts by x before joining observations and
 is appropriate for time series. <code>geom_path()</code> joins rows in
 their existing order and is useful for trajectories. Multiple lines need
@@ -3243,9 +3542,9 @@ Figure 6: A time series with a reference line.
 rather than an ordinary string. For grouped time series, also verify
 that observations are sorted by time within every group.</p>
 </div>
-<div id="bars-geom_bar-versus-geom_col" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Bars:
-<code>geom_bar()</code> versus <code>geom_col()</code></h2>
+<div id="bars-geom_bar-versus-geom_col" class="section level2 hasAnchor" number="3.4">
+<h2 class="hasAnchor"><span class="header-section-number">3.4</span>
+Bars: <code>geom_bar()</code> versus <code>geom_col()</code><a href="#bars-geom_bar-versus-geom_col" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These functions look similar but express different data
 semantics:</p>
 <ul>
@@ -3287,9 +3586,9 @@ Figure 8: geom_col() draws a precomputed average for each category.
 </p>
 </div>
 </div>
-<div id="stack-dodge-and-fill" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Stack, dodge, and
-fill</h2>
+<div id="stack-dodge-and-fill" class="section level2 hasAnchor" number="3.5">
+<h2 class="hasAnchor"><span class="header-section-number">3.5</span>
+Stack, dodge, and fill<a href="#stack-dodge-and-fill" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>position</code> controls how groups at the same category are
 arranged:</p>
 <table>
@@ -3351,12 +3650,12 @@ vehicle classes.
 label <code>n</code> or also show a count chart.</p>
 </div>
 </div>
-<div id="distributions-and-statistical-transformations" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Distributions and
-statistical transformations</h1>
-<div id="histograms-and-densities" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Histograms and
-densities</h2>
+<div id="distributions-and-statistical-transformations" class="section level1 hasAnchor" number="4">
+<h1 class="hasAnchor"><span class="header-section-number">4</span>
+Distributions and statistical transformations<a href="#distributions-and-statistical-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="histograms-and-densities" class="section level2 hasAnchor" number="4.1">
+<h2 class="hasAnchor"><span class="header-section-number">4.1</span>
+Histograms and densities<a href="#histograms-and-densities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A histogram’s message can change with bin width. <code>bins</code>
 specifies the number of bins; <code>binwidth</code> specifies each bin’s
 width. Try several defensible values based on measurement precision and
@@ -3386,9 +3685,9 @@ economy.
 statistical transformation. It is the modern replacement for the old
 <code>..density..</code> notation.</p>
 </div>
-<div id="boxplots-and-violin-plots" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Boxplots and violin
-plots</h2>
+<div id="boxplots-and-violin-plots" class="section level2 hasAnchor" number="4.2">
+<h2 class="hasAnchor"><span class="header-section-number">4.2</span>
+Boxplots and violin plots<a href="#boxplots-and-violin-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Boxplots compactly show the median, interquartile range, and
 outliers; violin plots show distribution shape. When combining them,
 keep either layer from obscuring the other.</p>
@@ -3415,9 +3714,9 @@ summaries.
 observations and report group sample sizes when needed. A boxplot
 outlier is not automatically a data error.</p>
 </div>
-<div id="stat_summary-summarize-while-plotting" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span>
-<code>stat_summary()</code>: summarize while plotting</h2>
+<div id="stat_summary-summarize-while-plotting" class="section level2 hasAnchor" number="4.3">
+<h2 class="hasAnchor"><span class="header-section-number">4.3</span>
+<code>stat_summary()</code>: summarize while plotting<a href="#stat_summary-summarize-while-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>stat_summary()</code> can calculate a center and interval by x
 group. The point below is a mean and the range is “mean ± one standard
 deviation.” This is not a confidence interval, so the caption must
@@ -3453,12 +3752,12 @@ build an explicit summary data frame first, then draw it with
 <code>geom_errorbar()</code> so the calculations are easy to audit.</p>
 </div>
 </div>
-<div id="facets-small-multiples-for-group-comparison" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Facets: small multiples
-for group comparison</h1>
-<div id="facet_wrap-and-facet_grid" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span>
-<code>facet_wrap()</code> and <code>facet_grid()</code></h2>
+<div id="facets-small-multiples-for-group-comparison" class="section level1 hasAnchor" number="5">
+<h1 class="hasAnchor"><span class="header-section-number">5</span>
+Facets: small multiples for group comparison<a href="#facets-small-multiples-for-group-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="facet_wrap-and-facet_grid" class="section level2 hasAnchor" number="5.1">
+<h2 class="hasAnchor"><span class="header-section-number">5.1</span>
+<code>facet_wrap()</code> and <code>facet_grid()</code><a href="#facet_wrap-and-facet_grid" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>facet_wrap(~ var)</code>: one faceting variable, wrapped into
 rows and columns;</li>
@@ -3507,12 +3806,12 @@ does not occur. Do not remove empty combinations merely for
 appearance.</p>
 </div>
 </div>
-<div id="scales-controlling-visual-mappings" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Scales: controlling
-visual mappings</h1>
-<div id="continuous-discrete-and-manual-scales" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Continuous, discrete,
-and manual scales</h2>
+<div id="scales-controlling-visual-mappings" class="section level1 hasAnchor" number="6">
+<h1 class="hasAnchor"><span class="header-section-number">6</span>
+Scales: controlling visual mappings<a href="#scales-controlling-visual-mappings" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="continuous-discrete-and-manual-scales" class="section level2 hasAnchor" number="6.1">
+<h2 class="hasAnchor"><span class="header-section-number">6.1</span>
+Continuous, discrete, and manual scales<a href="#continuous-discrete-and-manual-scales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Scale functions generally follow
 <code>scale_&lt;aesthetic&gt;_&lt;type&gt;()</code>, for example:</p>
 <ul>
@@ -3556,9 +3855,9 @@ Figure 15: Diamond weight and price on logarithmic scales.
 the meaning of visual distance. State the transformation in an axis
 label or caption.</p>
 </div>
-<div id="manual-colors-and-category-order" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Manual colors and
-category order</h2>
+<div id="manual-colors-and-category-order" class="section level2 hasAnchor" number="6.2">
+<h2 class="hasAnchor"><span class="header-section-number">6.2</span>
+Manual colors and category order<a href="#manual-colors-and-category-order" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Use a named vector for manual colors so categories are matched by
 name rather than by an accidental factor order.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>drive_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1b9e77&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;#d95f02&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;#7570b3&quot;</span>)</span>
@@ -3590,9 +3889,9 @@ patterns are:</p>
 <span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># Reorder groups by a numerical summary</span></span>
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>dat<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">reorder</span>(dat<span class="sc">$</span>group, dat<span class="sc">$</span>value, <span class="at">FUN =</span> median)</span></code></pre></div>
 </div>
-<div id="limits-versus-visual-zooming" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> <code>limits</code>
-versus visual zooming</h2>
+<div id="limits-versus-visual-zooming" class="section level2 hasAnchor" number="6.3">
+<h2 class="hasAnchor"><span class="header-section-number">6.3</span>
+<code>limits</code> versus visual zooming<a href="#limits-versus-visual-zooming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This distinction can change a statistical result:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Deletes out-of-range observations before statistical computation;</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co"># smooths, boxplots, and other summaries may change</span></span>
@@ -3605,12 +3904,12 @@ view. If filtering is analytically intended, filter explicitly before
 plotting so the decision is visible.</p>
 </div>
 </div>
-<div id="coordinate-systems-labels-and-annotations" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> Coordinate systems,
-labels, and annotations</h1>
-<div id="coordinate-systems" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Coordinate
-systems</h2>
+<div id="coordinate-systems-labels-and-annotations" class="section level1 hasAnchor" number="7">
+<h1 class="hasAnchor"><span class="header-section-number">7</span>
+Coordinate systems, labels, and annotations<a href="#coordinate-systems-labels-and-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="coordinate-systems" class="section level2 hasAnchor" number="7.1">
+<h2 class="hasAnchor"><span class="header-section-number">7.1</span>
+Coordinate systems<a href="#coordinate-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><code>coord_cartesian()</code>: zoom without deleting
 observations;</li>
@@ -3624,9 +3923,9 @@ charts, although angles and areas are hard to compare accurately.</li>
 <p>Coordinates are applied after scales. When exact comparisons matter,
 position and length are usually easier to read than angle or area.</p>
 </div>
-<div id="titles-labels-reference-lines-and-annotations" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Titles, labels,
-reference lines, and annotations</h2>
+<div id="titles-labels-reference-lines-and-annotations" class="section level2 hasAnchor" number="7.2">
+<h2 class="hasAnchor"><span class="header-section-number">7.2</span>
+Titles, labels, reference lines, and annotations<a href="#titles-labels-reference-lines-and-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>labs()</code> manages titles, subtitles, axes, guide titles,
 and captions. <code>annotate()</code> adds one-off explanations, while
 <code>geom_text()</code> and <code>geom_label()</code> add labels from a
@@ -3668,12 +3967,12 @@ Figure 17: Reference lines and annotations emphasize a key region.
 extra plotting extension is required.</p>
 </div>
 </div>
-<div id="themes-legends-and-reusable-styling" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Themes, legends, and
-reusable styling</h1>
-<div id="what-a-theme-controls" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> What a theme
-controls</h2>
+<div id="themes-legends-and-reusable-styling" class="section level1 hasAnchor" number="8">
+<h1 class="hasAnchor"><span class="header-section-number">8</span>
+Themes, legends, and reusable styling<a href="#themes-legends-and-reusable-styling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-a-theme-controls" class="section level2 hasAnchor" number="8.1">
+<h2 class="hasAnchor"><span class="header-section-number">8.1</span>
+What a theme controls<a href="#what-a-theme-controls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A theme controls <strong>non-data elements</strong> and does not
 alter data mappings. Common complete themes include
 <code>theme_minimal()</code>, <code>theme_classic()</code>, and
@@ -3715,9 +4014,9 @@ adjust order, rows, or example marks, and
 legend.</p>
 </div>
 </div>
-<div id="two-dimensional-summaries-heatmaps" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Two-dimensional
-summaries: heatmaps</h1>
+<div id="two-dimensional-summaries-heatmaps" class="section level1 hasAnchor" number="9">
+<h1 class="hasAnchor"><span class="header-section-number">9</span>
+Two-dimensional summaries: heatmaps<a href="#two-dimensional-summaries-heatmaps" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>When both axes are categorical and a cell represents a count or
 value, <code>geom_tile()</code> is a useful choice.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>heat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(<span class="at">cyl =</span> mpg<span class="sc">$</span>cyl, <span class="at">drv =</span> mpg<span class="sc">$</span>drv))</span>
@@ -3745,9 +4044,9 @@ common color-vision differences and grayscale printing. If labels
 disappear on light cells, choose text color conditionally from the fill
 value.</p>
 </div>
-<div id="using-ggplot2-inside-functions" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Using ggplot2 inside
-functions</h1>
+<div id="using-ggplot2-inside-functions" class="section level1 hasAnchor" number="10">
+<h1 class="hasAnchor"><span class="header-section-number">10</span>
+Using ggplot2 inside functions<a href="#using-ggplot2-inside-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Do not use the deprecated <code>aes_string()</code>. When a function
 receives column names as strings, use <code>.data[[...]]</code>:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>make_scatter <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, y, <span class="at">color =</span> <span class="cn">NULL</span>) {</span>
@@ -3775,9 +4074,9 @@ layers:</p>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
 <span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A plot returned by a function remains extensible&quot;</span>)</span></code></pre></div>
 </div>
-<div id="exporting-high-quality-figures" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> Exporting high-quality
-figures</h1>
+<div id="exporting-high-quality-figures" class="section level1 hasAnchor" number="11">
+<h1 class="hasAnchor"><span class="header-section-number">11</span>
+Exporting high-quality figures<a href="#exporting-high-quality-figures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><code>ggsave()</code> saves the last displayed plot by default.
 Passing <code>plot</code> explicitly is safer in scripts and functions.
 Width, height, and <code>dpi</code> jointly determine raster image
@@ -3810,9 +4109,9 @@ file;</li>
 zoomed RStudio preview.</li>
 </ul>
 </div>
-<div id="common-problems-and-a-debugging-checklist" class="section level1" number="12">
-<h1><span class="header-section-number">12</span> Common problems and a
-debugging checklist</h1>
+<div id="common-problems-and-a-debugging-checklist" class="section level1 hasAnchor" number="12">
+<h1 class="hasAnchor"><span class="header-section-number">12</span>
+Common problems and a debugging checklist<a href="#common-problems-and-a-debugging-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <table>
 <colgroup>
 <col width="33%" />
@@ -3896,9 +4195,9 @@ First determine why values are missing, whether deletion is appropriate,
 and whether deletion changes the conclusion.</p>
 </div>
 </div>
-<div id="quick-selection-guide" class="section level1" number="13">
-<h1><span class="header-section-number">13</span> Quick selection
-guide</h1>
+<div id="quick-selection-guide" class="section level1 hasAnchor" number="13">
+<h1 class="hasAnchor"><span class="header-section-number">13</span>
+Quick selection guide<a href="#quick-selection-guide" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <table>
 <colgroup>
 <col width="33%" />
@@ -3960,9 +4259,9 @@ guide</h1>
 </tbody>
 </table>
 </div>
-<div id="a-reliable-plotting-workflow" class="section level1" number="14">
-<h1><span class="header-section-number">14</span> A reliable plotting
-workflow</h1>
+<div id="a-reliable-plotting-workflow" class="section level1 hasAnchor" number="14">
+<h1 class="hasAnchor"><span class="header-section-number">14</span> A
+reliable plotting workflow<a href="#a-reliable-plotting-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ol style="list-style-type: decimal">
 <li>Confirm the unit of analysis, missingness, variable types, and
 reasonable ranges.</li>
@@ -3980,9 +4279,9 @@ at the final size.</li>
 and retain the plotting code and session information.</li>
 </ol>
 </div>
-<div id="version-and-reproducibility-information" class="section level1" number="15">
-<h1><span class="header-section-number">15</span> Version and
-reproducibility information</h1>
+<div id="version-and-reproducibility-information" class="section level1 hasAnchor" number="15">
+<h1 class="hasAnchor"><span class="header-section-number">15</span>
+Version and reproducibility information<a href="#version-and-reproducibility-information" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This document uses modern ggplot2 syntax: <code>linewidth</code> for
 line width, <code>after_stat()</code> for computed variables, and
 <code>.data[[...]]</code> in programmatic mappings.</p>
