@@ -1,36 +1,50 @@
 # The V Lab ggplot2 Learning Studio
 
-一个面向 R 学习者和数据分析者的双语 ggplot2 学习网站。课程从图形语法与审美映射出发，系统介绍常用几何对象、统计变换、分面、标度、坐标、主题、注释、函数封装与高质量导出。
+**English** | [简体中文](README_zh.md)
 
-## 在线网站
+A bilingual, self-paced ggplot2 learning website for R learners and data analysts. The tutorials start with the grammar of graphics and aesthetic mappings, then cover common geoms, statistical transformations, facets, scales, coordinates, themes, annotations, reusable plotting functions, and high-quality export.
 
-访问 [The V Lab ggplot2 Learning Studio](https://laboratoirev.github.io/Data_Visulization/) 选择英文版或中文版教程。
+## Live website
 
-## 文件
+Visit [The V Lab ggplot2 Learning Studio](https://laboratoirev.github.io/Data_Visulization/) and choose the English or Chinese edition.
 
-- `index.html`：网站首页、学习路线和双语教程入口。
-- `ggplot2_tutorial_en.html`：英文实践教程。
-- `ggplot2_tutorial_zh.html`：中文实践教程。
-- `styles.css`：教程页面共用的品牌、导航和响应式样式。
-- `includes/vlab-brand.html`：教程页面共用的 The V Lab 首页入口。
-- `og.png`：网站社交分享预览图。
-- `.nojekyll`：让 GitHub Pages 原样发布静态文件。
-- `render.R`：自动发现本地 Rmd 并生成同名 HTML。
+- [English tutorial](https://laboratoirev.github.io/Data_Visulization/ggplot2_tutorial_en.html)
+- [中文教程](https://laboratoirev.github.io/Data_Visulization/ggplot2_tutorial_zh.html)
 
-## 重新渲染
+## What the tutorials include
 
-`.Rmd` 源文件仅保存在本地工作副本中，并通过 `.gitignore` 排除，不发布到 GitHub。生成的 HTML 会保留完整的教学代码和图表。
+- 15 structured sections in each language
+- 20 rendered charts with visible, runnable R code
+- built-in R and ggplot2 datasets—no external data download required
+- modern ggplot2 syntax for layers, computed variables, and programmatic mappings
+- practical guidance on chart selection, common mistakes, reusable themes, and export
+- matching English and Chinese examples, figures, and learning sequence
 
-在包含本地 Rmd 源文件的工作副本中运行：
+## Repository contents
+
+- `index.html`: website homepage, learning path, topic guide, and bilingual entry points
+- `ggplot2_tutorial_en.html`: complete English tutorial
+- `ggplot2_tutorial_zh.html`: complete Chinese tutorial
+- `styles.css`: shared tutorial branding, navigation, and responsive styles
+- `includes/vlab-brand.html`: shared The V Lab homepage link for tutorial pages
+- `og.png`: social sharing preview image
+- `.nojekyll`: instructs GitHub Pages to publish the static files unchanged
+- `render.R`: discovers local R Markdown sources and renders matching HTML files
+
+## Render locally
+
+R Markdown source files are kept only in the local working copy and are excluded from GitHub through `.gitignore`. The generated HTML retains all teaching code and charts.
+
+From a working copy that contains the local Rmd files, run:
 
 ```bash
 Rscript render.R
 ```
 
-如果缺少依赖，可先安装：
+If dependencies are missing, install them first:
 
 ```r
 install.packages(c("rmarkdown", "knitr", "ggplot2"))
 ```
 
-教程使用 R 与 ggplot2 自带数据，不依赖外部数据文件。
+The tutorials use datasets bundled with R and ggplot2 and require no external data files.
