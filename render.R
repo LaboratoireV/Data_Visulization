@@ -10,11 +10,25 @@ project_dir <- if (length(file_arg)) {
 
 setwd(project_dir)
 
-if (!requireNamespace("rmarkdown", quietly = TRUE) ||
-    !requireNamespace("knitr", quietly = TRUE) ||
-    !requireNamespace("ggplot2", quietly = TRUE)) {
+project_library <- file.path(project_dir, ".Rlib")
+if (dir.exists(project_library)) {
+  .libPaths(c(project_library, .libPaths()))
+}
+
+required_packages <- c(
+  "rmarkdown", "knitr", "ggplot2", "plotly", "htmlwidgets", "crosstalk",
+  "plotlyGeoAssets"
+)
+missing_packages <- required_packages[
+  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+]
+
+if (length(missing_packages)) {
   stop(
-    "Missing rmarkdown, knitr, or ggplot2. Install them first; see README.md.",
+    paste0(
+      "Missing required packages: ", paste(missing_packages, collapse = ", "),
+      ". Install them first; see README.md."
+    ),
     call. = FALSE
   )
 }

@@ -262,6 +262,26 @@ tbody tr:nth-child(even) { background: #f7fafc; }
   font-size: 14px;
 }
 
+.plotly.html-widget {
+  width: 100% !important;
+  max-width: 100%;
+  margin: 1.15rem 0 0.35rem;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(23, 50, 77, 0.05);
+}
+
+.widget-caption {
+  max-width: 82ch;
+  margin: 0.35rem 0 1.8rem;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.widget-caption strong { color: var(--navy); }
+
 .tocify {
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -378,6 +398,7 @@ html[lang^="zh"] button.dropdown-toggle::after { content: "代码 ▾"; }
   .row > .col-xs-12.col-sm-4.col-md-3 { display: none; }
   .toc-content { float: none; width: 100% !important; }
   .guide-footer { align-items: flex-start; flex-direction: column; }
+  .plotly.html-widget { min-height: 390px; }
 }
 
 @media print {
@@ -391,7 +412,10 @@ html[lang^="zh"] button.dropdown-toggle::after { content: "代码 ▾"; }
   .guide-footer { color: #111; }
   .guide-footer-mark { box-shadow: none; }
   .main-container { max-width: none; padding: 0; }
-  pre, table, figure, .figure, .callout { break-inside: avoid; box-shadow: none; }
+  pre, table, figure, .figure, .callout, .plotly.html-widget {
+    break-inside: avoid;
+    box-shadow: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

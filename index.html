@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A bilingual, self-paced ggplot2 learning studio from The V Lab with 20 runnable charts, modern R syntax, and practical visualization guidance.">
+  <meta name="description" content="A bilingual, self-paced data visualization studio from The V Lab with detailed ggplot2 and Plotly tutorials, runnable R code, and shareable charts.">
   <meta name="theme-color" content="#12383b">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://laboratoirev.github.io/Data_Visulization/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The V Lab">
-  <meta property="og:title" content="ggplot2 Learning Studio | The V Lab">
-  <meta property="og:description" content="Learn ggplot2 through a bilingual, example-driven path from mappings and geoms to scales, facets, themes, and export.">
+  <meta property="og:title" content="Data Visualization Learning Studio | The V Lab">
+  <meta property="og:description" content="Learn ggplot2 and Plotly through bilingual, example-driven courses for clear static graphics and interactive HTML visualizations.">
   <meta property="og:url" content="https://laboratoirev.github.io/Data_Visulization/">
   <meta property="og:image" content="https://laboratoirev.github.io/Data_Visulization/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="The V Lab ggplot2 Learning Studio">
+  <meta property="og:image:alt" content="The V Lab Data Visualization Learning Studio">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ggplot2 Learning Studio | The V Lab">
-  <meta name="twitter:description" content="A bilingual, example-driven guide to clear and reproducible data visualization with R.">
+  <meta name="twitter:title" content="Data Visualization Learning Studio | The V Lab">
+  <meta name="twitter:description" content="Bilingual, runnable guides to clear ggplot2 graphics and interactive Plotly visualizations with R.">
   <meta name="twitter:image" content="https://laboratoirev.github.io/Data_Visulization/og.png">
-  <title>ggplot2 Learning Studio | The V Lab</title>
+  <title>Data Visualization Learning Studio | The V Lab</title>
   <style>
     :root {
       --ink: #12383b;
@@ -452,6 +452,8 @@
     }
 
     .course-card:nth-child(2) { border-top-color: var(--coral); }
+    .course-card:nth-child(3) { border-top-color: var(--blue); }
+    .course-card:nth-child(4) { border-top-color: var(--violet); }
     .course-card:hover, .course-card:focus-within {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
@@ -515,6 +517,8 @@
     .language-actions { margin-top: 17px; }
     .language-actions .button { color: #fff; background: var(--teal); }
     .course-card:nth-child(2) .language-actions .button { background: var(--coral); }
+    .course-card:nth-child(3) .language-actions .button { background: var(--blue); }
+    .course-card:nth-child(4) .language-actions .button { background: var(--violet); }
 
     .topics-grid {
       display: grid;
@@ -657,7 +661,7 @@
 
   <div class="header-wrap">
     <header class="site-header shell">
-      <a class="brand" href="index.html" aria-label="The V Lab ggplot2 learning studio home" aria-current="page">
+      <a class="brand" href="index.html" aria-label="The V Lab data visualization learning studio home" aria-current="page">
         <span class="brand-mark" aria-hidden="true">V</span>
         <span>The V Lab</span>
       </a>
@@ -676,14 +680,14 @@
       <div>
         <p class="eyebrow">Bilingual data visualization studio <span lang="zh-CN">· 双语数据可视化课程</span></p>
         <h1 id="page-title">Make data visible.</h1>
-        <p class="hero-zh" lang="zh-CN">用 ggplot2 把数据讲清楚。</p>
+        <p class="hero-zh" lang="zh-CN">用 ggplot2 与 Plotly 把数据讲清楚。</p>
         <p class="hero-copy">
-          A practical, self-paced path through the grammar of graphics—from the first mapping to polished, reproducible figures ready for analysis, teaching, and publication.
-          <span lang="zh-CN">从第一张映射图开始，逐步掌握图形语法、常用图层与出版级细节，做出适合分析、教学和分享的可重复图表。</span>
+          Learn publication-ready static graphics with ggplot2 and browser-based interaction with Plotly—from the first mapping or trace to polished, reproducible figures ready for analysis, teaching, and sharing.
+          <span lang="zh-CN">从第一张映射图或 trace 开始，逐步掌握出版级静态图形与可分享的互动 HTML，做出适合分析、教学和沟通的可重复图表。</span>
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="ggplot2_tutorial_en.html" hreflang="en">Start in English <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN">从中文版开始 <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="#tutorials">Explore all tutorials <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="plotly_tutorial_en.html" hreflang="en">Start with Plotly <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
@@ -740,8 +744,8 @@
         <div class="section-intro">
           <h2 id="tutorials-title">Choose your edition.</h2>
           <p>
-            Both editions follow the same 15-part structure and execute the same examples. Every page includes visible R code, 20 rendered charts, explanations, pitfalls, and a reproducible workflow.
-            <span lang="zh-CN">中英文版采用相同的 15 章结构与示例，每页均包含可见 R 代码、20 幅实绘图表、方法解释、常见陷阱与复现流程。</span>
+            Choose one of two bilingual courses. The ggplot2 editions contain 15 sections and 20 rendered charts; the Plotly editions contain 18 sections and 23 interactive figures. Each English–Chinese pair follows the same examples and learning sequence.
+            <span lang="zh-CN">选择两门双语课程之一：ggplot2 中英文版各含 15 章、20 幅实绘图表；Plotly 中英文版各含 18 章、23 个互动图表。每组中英文教程均保持相同示例与学习顺序。</span>
           </p>
         </div>
 
@@ -773,6 +777,34 @@
               <a class="button" href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN" aria-label="打开 ggplot2 中文实践教程">打开中文教程 <span aria-hidden="true">→</span></a>
             </div>
           </article>
+
+          <article class="course-card">
+            <div class="course-topline">
+              <span class="course-number">EN</span>
+              <div class="course-meta"><span class="tag">18 sections</span><span class="tag">23 interactive figures</span></div>
+            </div>
+            <h3>Plotly for R</h3>
+            <p class="course-title-zh">English interactive edition</p>
+            <p class="course-description">A runnable guide to traces, mappings, hover, layout, subplots, Crosstalk, animation, maps, Shiny events, HTML publishing, and WebGL performance.</p>
+            <p class="topic-line">plot_ly · ggplotly · hover · subplot · Crosstalk · animation · maps · export</p>
+            <div class="language-actions">
+              <a class="button" href="plotly_tutorial_en.html" hreflang="en" aria-label="Open the English Plotly tutorial">Open English tutorial <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-topline">
+              <span class="course-number">中文</span>
+              <div class="course-meta"><span class="tag">18 章</span><span class="tag">23 个互动图</span></div>
+            </div>
+            <h3 lang="zh-CN">Plotly for R 常用方法</h3>
+            <p class="course-title-zh" lang="zh-CN">中文互动教程</p>
+            <p class="course-description" lang="zh-CN">系统学习 trace、映射、悬停、布局、子图、Crosstalk、动画、地图、Shiny 事件、HTML 发布与 WebGL 性能。</p>
+            <p class="topic-line" lang="zh-CN">plot_ly · ggplotly · 悬停 · 子图 · Crosstalk · 动画 · 地图 · 导出</p>
+            <div class="language-actions">
+              <a class="button" href="plotly_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN" aria-label="打开 Plotly 中文互动教程">打开中文教程 <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -790,8 +822,8 @@
         <article class="topic-card"><span class="topic-code">geom_histogram()</span><h3>Distributions</h3><p>Histograms, densities, boxplots, violins, and meaningful bin widths.</p></article>
         <article class="topic-card"><span class="topic-code">geom_col()</span><h3>Comparisons</h3><p>Counts versus summaries, ordering, stacking, dodging, and proportions.</p></article>
         <article class="topic-card"><span class="topic-code">geom_line()</span><h3>Change over time</h3><p>Dates, time-series grouping, reference lines, and readable axis labels.</p></article>
-        <article class="topic-card"><span class="topic-code">facet_wrap()</span><h3>Small multiples</h3><p>Facets, shared scales, coordinate choices, legends, and annotations.</p></article>
-        <article class="topic-card"><span class="topic-code">ggsave()</span><h3>Reusable output</h3><p>Custom themes, plotting functions, dimensions, resolution, and export formats.</p></article>
+        <article class="topic-card"><span class="topic-code">ggplotly()</span><h3>Interactive conversion</h3><p>Turn familiar ggplot2 figures into browser widgets with deliberate tooltips and controls.</p></article>
+        <article class="topic-card"><span class="topic-code">plot_ly()</span><h3>Interactive composition</h3><p>Build native traces, linked subplots, animations, maps, and shareable HTML.</p></article>
       </div>
     </section>
 
@@ -799,12 +831,12 @@
       <div class="principles">
         <h2 id="about-title">Learn the decision—not just the command.</h2>
         <p>
-          The tutorials connect every ggplot2 function to a comparison task, explain what the layer computes, and highlight choices that can change the reader's interpretation.
-          <span lang="zh-CN">课程把每个 ggplot2 函数放回实际比较任务中，说明图层计算了什么，并指出哪些选择会改变读者的理解。</span>
+          The tutorials connect every ggplot2 layer and Plotly trace to a comparison task, explain what the chart computes, and highlight choices that can change the reader's interpretation.
+          <span lang="zh-CN">课程把每个 ggplot2 图层与 Plotly trace 放回实际比较任务中，说明图表计算了什么，并指出哪些选择会改变读者的理解。</span>
         </p>
         <div class="principle-grid">
           <div class="principle"><strong>Runnable by default</strong><span>Built-in datasets, fixed seeds, and complete code examples.</span></div>
-          <div class="principle"><strong>Modern ggplot2</strong><span>Current syntax for line widths, computed variables, and programmatic mappings.</span></div>
+          <div class="principle"><strong>Modern R graphics</strong><span>Current ggplot2 syntax and practical Plotly APIs for interactive HTML.</span></div>
           <div class="principle"><strong>Bilingual structure</strong><span>Parallel English and Chinese editions with matching examples and figures.</span></div>
         </div>
       </div>
@@ -813,13 +845,15 @@
 
   <footer class="site-footer shell">
     <div>
-      <span class="footer-title">The V Lab · ggplot2 Learning Studio</span>
-      <span>Clear graphics, reproducible R, and bilingual learning.</span>
+      <span class="footer-title">The V Lab · Data Visualization Learning Studio</span>
+      <span>Clear graphics, meaningful interaction, reproducible R, and bilingual learning.</span>
     </div>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="#learning-path">Learning path</a>
-      <a href="ggplot2_tutorial_en.html" hreflang="en">English</a>
-      <a href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN">中文</a>
+      <a href="ggplot2_tutorial_en.html" hreflang="en">ggplot2 EN</a>
+      <a href="ggplot2_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN">ggplot2 中文</a>
+      <a href="plotly_tutorial_en.html" hreflang="en">Plotly EN</a>
+      <a href="plotly_tutorial_zh.html" hreflang="zh-CN" lang="zh-CN">Plotly 中文</a>
       <a href="https://github.com/LaboratoireV/Data_Visulization">GitHub</a>
     </nav>
   </footer>
