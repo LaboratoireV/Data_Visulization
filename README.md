@@ -4,10 +4,10 @@ A self-paced data visualization website for R learners and data analysts. The gg
 
 ## Live website
 
-Visit [The V Lab Data Visualization Learning Studio](https://laboratoirev.github.io/Data_Visulization/) or open a course directly:
+Visit [The V Lab Data Visualization Learning Studio](https://the-v-lab.github.io/Data_Visulization/) or open a course directly:
 
-- [ggplot2 tutorial](https://laboratoirev.github.io/Data_Visulization/ggplot2_tutorial_en.html)
-- [Plotly tutorial](https://laboratoirev.github.io/Data_Visulization/plotly_tutorial_en.html)
+- [ggplot2 tutorial](https://the-v-lab.github.io/Data_Visulization/ggplot2_tutorial_en.html)
+- [Plotly tutorial](https://the-v-lab.github.io/Data_Visulization/plotly_tutorial_en.html)
 
 ## Courses
 
